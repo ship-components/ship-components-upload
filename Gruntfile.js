@@ -24,7 +24,7 @@ module.exports = function(grunt) {
      * @type    {String}
      */
     dir = require('path').resolve(dir);
-
+    console.log(dir);
     /**
      * Interal collection of modules loaded
      *
@@ -83,5 +83,5 @@ module.exports = function(grunt) {
   // Run task functions to configure Grunt.
   invokeConfigFn(taskConfigurations);
   invokeConfigFn(registerDefinitions);
-
+  debugger;
 };

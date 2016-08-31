@@ -1,10 +1,3 @@
-/**
- * Example Webpack Configuration for Ship Components
- *
- * ---------------------------------------------------------------
- *
- * For usage docs see: webpack.github.io
- */
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -12,7 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   // Where to start
   entry: {
-    index: path.resolve(__dirname, '../../src/index.js')
+    main: path.resolve(__dirname, '../../src/index.js')
   },
 
   // Where to output
@@ -20,6 +13,14 @@ module.exports = {
     path: path.resolve(__dirname, '../../dist'),
     filename: '[name].js',
     libraryTarget: 'umd'
+  },
+
+  externals: {
+    classnames: true,
+    react: 'React',
+    'react-dom': true,
+    'ship-components-highlight-click': true,
+    'react-addons-css-transition-group': true
   },
 
   module: {
@@ -30,8 +31,8 @@ module.exports = {
       loader: 'eslint'
     }],
     loaders: [
+      // ES6/JSX for App
       {
-        // Setup babel loader for core files
         test: /\.(jsx?|es6)$/,
         exclude: /node_modules/,
         loader: 'babel'
@@ -50,38 +51,36 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'strict'
       },
+      // CSS Modules
       {
-        // CSS Modules
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
-           // Generated classnames can be configured here by changing `localIdentName`
           'css-loader?modules&importLoaders=1&localIdentName=[name]--[local]!postcss-loader'
         )
       }
     ]
   },
+
   eslint: {
     // Strict linting enforcing
     failOnWarning: true
   },
 
-  // CSS Modules / PostCSS config
+  // CSS Modules
   postcss: [
     require('postcss-nested'),
     require('postcss-simple-vars')({
-      variables: function() {
-        return {
-          'primary-color' : '#5e8aaa'
-        };
+      variables: {
+        'primary-color' : '#42aa65'
       }
     }),
     require('postcss-color-hex-alpha'),
-    require('postcss-hexrgba'),
     require('postcss-color-function'),
     require('postcss-calc'),
     require('autoprefixer')
   ],
+
   stats: {
     children: false,
     colors: true,
@@ -97,8 +96,14 @@ module.exports = {
   resolveLoader: {
     fallback: path.resolve(__dirname, '../../node_modules')
   },
+
   plugins: [
-    // Required to combine all css chunks together
-    new ExtractTextPlugin('[name].css')
-  ]
+    new ExtractTextPlugin('[name].css', {
+      allChunks: true
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(true)
+  ],
+
+  devtool: 'source-map'
 };

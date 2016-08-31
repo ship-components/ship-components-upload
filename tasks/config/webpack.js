@@ -60,7 +60,7 @@ module.exports = function(grunt) {
   var serverOptions = assign({}, require('./webpack.config'), {
     plugins: [],
     entry : {
-      bundle: path.resolve(__dirname, '../../examples/ButtonsExample.jsx')
+      bundle: path.resolve(__dirname, '../../examples/UploadExamples.jsx')
     },
     output: {
       filename: 'bundle.js'
