@@ -5,18 +5,20 @@ import css from './button.css';
 export default class UploadButton extends React.Component {
    render() {
       // let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
-      // console.log(css[this.props.type]);
+      console.log('UploadButton', this.props);
+      let color = this.props.color,
+         label = this.props.label;
 
-      // let className = cx(cx.btn, cx.blue);
+      console.log(color, label);
 
       return (
-         <div className={classNames(css.btn,
-                  css.blue,
-                  css.raised
-               )
-         }>
-            {this.props.children}
-         </div>
+         <button className={
+            classNames(
+                  css.btn,
+                  css.raised,
+                  css.flexItem
+            )
+         } {...this.props} />
       );
    }
 }

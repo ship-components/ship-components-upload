@@ -12,13 +12,13 @@ body {
   -webkit-touch-callout: none;
 }
 
-.wrapper {
+.button--wrapper {
   margin: 20px auto;
   position: relative;
   height: 100px;
 }
 
-.groupWrapper {
+.button--groupWrapper {
   margin: 5px auto;
   border: 1px dashed black;
   height: 80%;
@@ -26,12 +26,14 @@ body {
   width: 90%;
 
   display: -webkit-box;
-  display: -moz-box;
   display: -ms-flexbox;
-  display: -webkit-flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
 
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+
+      justify-content: space-around;
 }
 
 form {
@@ -46,13 +48,13 @@ form {
   vertical-align: middle;
 }*/
 
-.flexItem {
+.button--flexItem {
   width: 100px;
   height: 100px;
   margin: auto;
 }
 
-.btn {
+.button--btn {
   width: 120px;
   height: 32px;
   border: none;
@@ -67,31 +69,36 @@ form {
   top: 35%;
 }
 
-.blue {
+.button--blue {
   background-color: #4285f4;
   color: #fff;
 }
 
-.narrow {
+.button--narrow {
   width: 60px;
 }
 
-.green {
+.button--green {
   background-color: #0f9d58;
   color: #fff;
 }
 
-.grey {
+.button--grey {
   background-color: #eee;
 }
 
-.raised {
+.button--raised {
+  -webkit-transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0.2s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
-.raised:active {
+.button--raised:active {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-  transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
 }
+
+/*# sourceMappingURL=main.css.map*/
