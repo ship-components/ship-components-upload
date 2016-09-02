@@ -17,14 +17,15 @@ body {
   margin: 20px auto;
   position: relative;
   height: 100px;
+  border: 1px dashed black;
+
 }
 
 .groupWrapper {
   margin: 5px auto;
-  border: 1px dashed black;
   height: 80%;
   position: relative;
-  width: 90%;
+  width: 100%;
 
   display: -webkit-box;
   display: -moz-box;
@@ -36,7 +37,7 @@ body {
 }
 
 form {
-  width: 80%;
+  width: 50%;
   padding: 5px;
   float: right;
   margin: 1rem;
@@ -67,7 +68,7 @@ form {
 
 .btn::before {
   /* arrow = &#x21E7;  */
-  content: "⇧ Upload";
+  content: "⇧ Choose File";
   display: inline-block;
   /*background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);*/
   /*border: none;*/
@@ -126,3 +127,26 @@ form {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
   transition-delay: 0s;
 }
+
+.img {
+  position: relative;
+  padding: 5px;
+  float: left;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+
+
+
+

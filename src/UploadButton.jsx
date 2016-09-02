@@ -11,6 +11,7 @@ export default class UploadButton extends React.Component {
       };
       this.handleChange = this.handleChange.bind(this);
    }
+
    handleChange (e) {
       this.setState({
          value: e.target.value.split(/(\\|\/)/g).pop()
@@ -22,9 +23,9 @@ export default class UploadButton extends React.Component {
 
    render() {
       // let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
-      console.log('UploadButton', this.props);
+      // console.log('UploadButton', this.props);
       let { color } = this.props;
-
+         // console.log(this.props.onChange);
       let btnClasses = classNames(
          css.btn,
          css.raised,
@@ -45,14 +46,12 @@ export default class UploadButton extends React.Component {
       // }
 
       return (
-         <div>
-            <input type='file'
-               onChange={this.handleChange}
-               disabled={this.props.disabled}
-               accept={this.props.accept}
-               className={btnClasses}>
-            </input>
-         </div>
+         <input type='file'
+            onChange={this.handleChange}
+            disabled={this.props.disabled}
+            accept={this.props.accept}
+            className={btnClasses}
+            webkitdirectory />
       );
    }
 }

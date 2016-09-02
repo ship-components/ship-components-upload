@@ -1,13 +1,28 @@
 import React from 'react';
 import classNames from 'classnames';
 import css from './button.css';
-import UploadButton from './UploadButton.jsx';
-// import ChooseFileButton from './ChooseFileButton.jsx';
-// import ImagePreview from './ImagePreview.jsx';
+import UploadButton from './UploadButton';
+import ImagePreview from './ImagePreview';
 
 export default class UploadContainer extends React.Component {
+   constructor(props, context) {
+      super(props, context);
+
+      this.state = {
+         imageFile: ''
+      };
+      this.handleChange = this.handleChange.bind(this);
+   }
+
    handleChange (event) {
       console.log('Selected file:', event.target.files[0]);
+
+      // Image src to pass it to ImagePreview Component
+      let imageFile = URL.createObjectURL(event.target.files[0]);
+
+      this.setState({
+         imageFile: imageFile
+      });
    }
 
    setColor (val = 'blue') {
@@ -36,12 +51,17 @@ export default class UploadContainer extends React.Component {
       return (
          <section className={classNames(css.wrapper)}>
             <section className={classNames(css.groupWrapper)}>
+               <ImagePreview
+                  onChange={this.state.imageFile}
+                  disabled={this.renderImage}
+               />
                <form className={classNames(css.flexContainer)}>
                   <UploadButton
                      accept='.png, .gif, .jpg, .jpeg'
                      onChange={this.handleChange.bind(this)}
                      color={this.setColor(color)}
-                     label={this.setText(text)} />
+                     label={this.setText(text)}
+                  />
                </form>
             </section>
          </section>
