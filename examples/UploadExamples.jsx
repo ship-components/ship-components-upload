@@ -8,7 +8,7 @@ import { UploadContainer } from '../src';
 
 class UploadButtonExamples extends React.Component {
   render() {
-    return (
+   return (
       <div>
          <h1>Upload Button Examples</h1>
          <div className='example-group'>
@@ -20,19 +20,19 @@ class UploadButtonExamples extends React.Component {
             <h2>Material Green Button</h2>
             <UploadContainer
                buttonColor='green'
-               buttonText='Upload' />
+               buttonText='Submit' />
          </div>
          <div className='example-group'>
             <h2>Material Grey Button</h2>
             <UploadContainer
                buttonColor='gray'
-               buttonText='Upload' />
+               buttonText='Done' />
          </div>
          <div className='example-group'>
             <h2>Material White Button</h2>
             <UploadContainer
                buttonColor='white'
-               buttonText='Upload' />
+               buttonText='Press' />
          </div>
       </div>
     )

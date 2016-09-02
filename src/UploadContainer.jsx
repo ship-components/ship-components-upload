@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import css from './button.css';
 import UploadButton from './UploadButton.jsx';
-import ChooseFileButton from './ChooseFileButton.jsx';
+// import ChooseFileButton from './ChooseFileButton.jsx';
 // import ImagePreview from './ImagePreview.jsx';
 
 export default class UploadContainer extends React.Component {
@@ -29,21 +29,19 @@ export default class UploadContainer extends React.Component {
    }
 
    render () {
-      console.log('Uploadcontainer', this.props);
-      let val = this.props.buttonColor,
+      // define button color and button text
+      let color = this.props.buttonColor,
          text = this.props.buttonText;
 
       return (
          <section className={classNames(css.wrapper)}>
             <section className={classNames(css.groupWrapper)}>
                <form className={classNames(css.flexContainer)}>
-                  <ChooseFileButton name='MyImage'
-                                    accept='.png, .gif, .jpg, .jpeg'
-                                    placeholder='Choose File'
-                                    onChange={this.handleChange.bind(this)} />
                   <UploadButton
-                  color={this.setColor(val)}
-                  label={this.setText(text)} />
+                     accept='.png, .gif, .jpg, .jpeg'
+                     onChange={this.handleChange.bind(this)}
+                     color={this.setColor(color)}
+                     label={this.setText(text)} />
                </form>
             </section>
          </section>
