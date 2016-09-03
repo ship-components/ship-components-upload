@@ -3,13 +3,14 @@ import classNames from 'classnames';
 import css from './button.css';
 
 export default class ImagePreview extends React.Component {
+
    /**
       * Find out if image src is available
       * If not hide the image area otherwise show the image
       * @return {String}
    */
    toggleImage () {
-      let image = this.props.onChange,
+      let image = this.props.imgSrc,
          imgShow = classNames(css.img, css.show),
          imgHide = classNames(css.img, css.hide);
       return image === '' ? imgHide : imgShow;
@@ -18,7 +19,7 @@ export default class ImagePreview extends React.Component {
    render() {
       return (
          <img
-            src={this.props.onChange}
+            src={this.props.imgSrc}
             className={this.toggleImage()}
          />
       );
@@ -30,6 +31,7 @@ export default class ImagePreview extends React.Component {
  * @type {Object}
  */
 ImagePreview.propTypes = {
+   imgSrc: React.PropTypes.string
 };
 
 /**

@@ -5,10 +5,11 @@
 body {
   background-color: #f9f9f9;
   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+  user-select: none;
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
 }
@@ -43,11 +44,6 @@ form {
   margin: 1rem;
 }
 
-/*input[type="file"] {
-  margin: 0 auto;
-  vertical-align: middle;
-}*/
-
 .flexItem {
   width: 100px;
   height: 100px;
@@ -67,30 +63,29 @@ form {
 }
 
 .btn::before {
-  /* arrow = &#x21E7;  */
-  content: "⇧ Choose File";
+  content: attr(data-content);
   display: inline-block;
-  /*background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);*/
-  /*border: none;*/
+  border: none;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   width: 100%;
   height: 32px;
   line-height: 32px;
-  /*padding: 5px 8px;*/
   text-align: center;
   outline: none;
   background-color: #fff;
   color: #646464;
   white-space: nowrap;
-  -webkit-user-select: none;
   cursor: pointer;
-  font-size: 10pt;
+  font-size: 1.2em;
+
+  -webkit-user-select: none;
 }
 
 .btn:hover::before {
-  border-color: black;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
 }
+
 .btn:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
@@ -98,10 +93,6 @@ form {
 .blue {
   background-color: #4285f4;
   color: #fff;
-}
-
-.narrow {
-  width: 60px;
 }
 
 .green {
@@ -116,6 +107,11 @@ form {
 .white {
   background-color: #fff;
 }
+
+.blue:hover { background-color: #0F52C1; }
+.green:hover { background-color: #006A25; }
+.gray:hover { background-color: #CCCCCC; }
+.white:hover { background-color: #eee; }
 
 .raised {
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -136,6 +132,7 @@ form {
   width: 60px;
   height: 60px;
   vertical-align: middle;
+  border-radius: 15px;
 }
 
 .hide {

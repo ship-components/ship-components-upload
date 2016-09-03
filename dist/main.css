@@ -5,10 +5,11 @@
 body {
   background-color: #f9f9f9;
   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+  user-select: none;
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
 }
@@ -17,14 +18,15 @@ body {
   margin: 20px auto;
   position: relative;
   height: 100px;
+  border: 1px dashed black;
+
 }
 
 .button--groupWrapper {
   margin: 5px auto;
-  border: 1px dashed black;
   height: 80%;
   position: relative;
-  width: 90%;
+  width: 100%;
 
   display: -webkit-box;
   display: -ms-flexbox;
@@ -38,16 +40,11 @@ body {
 }
 
 form {
-  width: 80%;
+  width: 50%;
   padding: 5px;
   float: right;
   margin: 1rem;
 }
-
-/*input[type="file"] {
-  margin: 0 auto;
-  vertical-align: middle;
-}*/
 
 .button--flexItem {
   width: 100px;
@@ -68,30 +65,29 @@ form {
 }
 
 .button--btn::before {
-  /* arrow = &#x21E7;  */
-  content: "\21E7   Upload";
+  content: attr(data-content);
   display: inline-block;
-  /*background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);*/
-  /*border: none;*/
+  border: none;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   width: 100%;
   height: 32px;
   line-height: 32px;
-  /*padding: 5px 8px;*/
   text-align: center;
   outline: none;
   background-color: #fff;
   color: #646464;
   white-space: nowrap;
-  -webkit-user-select: none;
   cursor: pointer;
-  font-size: 10pt;
+  font-size: 1.2em;
+
+  -webkit-user-select: none;
 }
 
 .button--btn:hover::before {
-  border-color: black;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
 }
+
 .button--btn:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
@@ -99,10 +95,6 @@ form {
 .button--blue {
   background-color: #4285f4;
   color: #fff;
-}
-
-.button--narrow {
-  width: 60px;
 }
 
 .button--green {
@@ -118,6 +110,11 @@ form {
   background-color: #fff;
 }
 
+.button--blue:hover { background-color: #0F52C1; }
+.button--green:hover { background-color: #006A25; }
+.button--gray:hover { background-color: #CCCCCC; }
+.button--white:hover { background-color: #eee; }
+
 .button--raised {
   -webkit-transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -131,5 +128,29 @@ form {
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
 }
+
+.button--img {
+  position: relative;
+  padding: 5px;
+  float: left;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  border-radius: 15px;
+}
+
+.button--hide {
+  visibility: hidden;
+}
+
+.button--show {
+  visibility: visible;
+}
+
+
+
+
+
 
 /*# sourceMappingURL=main.css.map*/

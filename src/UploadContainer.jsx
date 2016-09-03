@@ -5,8 +5,12 @@ import UploadButton from './UploadButton';
 import ImagePreview from './ImagePreview';
 
 export default class UploadContainer extends React.Component {
-   constructor(props, context) {
-      super(props, context);
+   /**
+      * Base Container
+      * @param  {Object} props
+   */
+   constructor(props) {
+      super(props);
 
       this.state = {
          imageFile: ''
@@ -14,17 +18,33 @@ export default class UploadContainer extends React.Component {
       this.handleChange = this.handleChange.bind(this);
    }
 
+   /**
+      * Handle the image state
+      * If image is available, will create a URL obj
+      * And modify the state value
+      * @param  {Event]} event
+   */
    handleChange (event) {
-      console.log('Selected file:', event.target.files[0]);
+      let evt = event.target.files[0],
+         imageFile;
 
       // Image src to pass it to ImagePreview Component
-      let imageFile = URL.createObjectURL(event.target.files[0]);
-
-      this.setState({
-         imageFile: imageFile
-      });
+      if(evt !== undefined) {
+         imageFile = URL.createObjectURL(event.target.files[0]);
+         console.log('Selected file:', event.target.files[0]);
+         this.setState({
+            imageFile: imageFile
+         });
+      } else {
+         console.warn('Warning: no image selected');
+      }
    }
 
+   /**
+      * Handle the button footer color
+      * @param  {string} color
+      * @return {string}
+   */
    setColor (val = 'blue') {
       let color = val.toLowerCase();
 
@@ -39,11 +59,17 @@ export default class UploadContainer extends React.Component {
       return color;
    }
 
+   /**
+      * Handle the button label text
+      * @param  {string} label
+      * @return {string}
+   */
    setText (label = 'Upload') {
       return label;
    }
 
    render () {
+
       // define button color and button text
       let color = this.props.buttonColor,
          text = this.props.buttonText;
@@ -52,8 +78,7 @@ export default class UploadContainer extends React.Component {
          <section className={classNames(css.wrapper)}>
             <section className={classNames(css.groupWrapper)}>
                <ImagePreview
-                  onChange={this.state.imageFile}
-                  disabled={this.renderImage}
+                  imgSrc={this.state.imageFile}
                />
                <form className={classNames(css.flexContainer)}>
                   <UploadButton
@@ -68,3 +93,12 @@ export default class UploadContainer extends React.Component {
       );
    }
 }
+
+/**
+ * Type Checks
+ * @type {Object}
+ */
+UploadContainer.propTypes = {
+  buttonColor: React.PropTypes.string,
+  buttonText: React.PropTypes.string
+};
