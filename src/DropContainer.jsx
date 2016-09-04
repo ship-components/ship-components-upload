@@ -54,9 +54,6 @@ export default class DropContainer extends React.Component {
          // isDragReject: !allFilesAccepted
       });
 
-      // let that;
-      // that = this;
-
       allFilesAccepted ? this.successBorder() : this.warningBorder();
   }
 
@@ -126,36 +123,41 @@ export default class DropContainer extends React.Component {
    handleChange (event) {
       let e = event.nativeEvent, imageFile;
 
-      // Setting the state image source
-      // With drag & drop event
-      if(e.dataTransfer) {
-         let evt = e.dataTransfer.files[0];
+      const dataTransferItems = this.extractData(event);
+      const allFilesAccepted = this.fileAccepted(Array.prototype.slice.call(dataTransferItems));
 
-         if(evt !== undefined) {
-            imageFile = URL.createObjectURL(evt);
-            console.log('**DRAGGED** SELECTED FILE', evt);
-            this.setState({
-               imageFile: imageFile
-            });
+      if(allFilesAccepted){
+         // Setting the state image source
+         // With drag & drop event
+         if(e.dataTransfer) {
+            let evt = e.dataTransfer.files[0];
+
+            if(evt !== undefined) {
+               imageFile = URL.createObjectURL(evt);
+               console.log('**DRAGGED** SELECTED FILE', evt);
+               this.setState({
+                  imageFile: imageFile
+               });
+            } else {
+               console.warn('Warning: no image selected');
+            }
+
+         // Setting the state image source
+         // With click button event
          } else {
-            console.warn('Warning: no image selected');
-         }
+            let evt = event.target.files[0];
 
-      // Setting the state image source
-      // With click button event
-      } else {
-         let evt = event.target.files[0];
+            // Image src to pass it to ImagePreview Component
+            if(evt !== undefined) {
+               imageFile = URL.createObjectURL(event.target.files[0]);
+               console.log('SELECTED FILE', event.target.files[0]);
 
-         // Image src to pass it to ImagePreview Component
-         if(evt !== undefined) {
-            imageFile = URL.createObjectURL(event.target.files[0]);
-            console.log('SELECTED FILE', event.target.files[0]);
-
-            this.setState({
-               imageFile: imageFile
-            });
-         } else {
-            console.warn('Warning: no image selected');
+               this.setState({
+                  imageFile: imageFile
+               });
+            } else {
+               console.warn('Warning: no image selected');
+            }
          }
       }
    }

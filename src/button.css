@@ -49,13 +49,35 @@ form {
 }
 
 .successBorder {
-  border: 2px groove green;
+  border: 2px solid #00852c;
   border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 133, 44, 1);
+}
+
+.successBorder::before {
+  content: 'Correct Format';
+  margin: auto;
+  padding: auto;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1em;
+  color: #00852c;
 }
 
 .warningBorder {
-  border: 2px groove red;
+  border: 2px solid #ff7575;
   border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(255, 117, 117, 1);
+}
+
+.warningBorder::before {
+  content: 'Incorrect Format: Please Upload An Image';
+  margin: auto;
+  padding: auto;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1em;
+  color: #ff7575;
 }
 
 .flexItem {
