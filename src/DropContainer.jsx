@@ -1,3 +1,5 @@
+/*eslint consistent-this: [2, "that"]*/
+
 import React from 'react';
 import classNames from 'classnames';
 import accepts from 'attr-accept';
@@ -15,7 +17,9 @@ export default class DropContainer extends React.Component {
       super(props);
       this.state = {
          imageFile: '',
-         isDragActive: false
+         isDragActive: false,
+         borderStyle: '',
+         visibility: 'show'
       };
       this.handleChange = this.handleChange.bind(this);
       this.onDragOver = this.onDragOver.bind(this);
@@ -30,27 +34,30 @@ export default class DropContainer extends React.Component {
       this.enterCounter = 0;
    }
 
-  onDragEnter(e) {
-    e.preventDefault();
+   onDragEnter(e) {
+      e.preventDefault();
 
-    // Count the dropzone and any children that are entered.
-    ++this.enterCounter;
+      // Count the dropzone and any children that are entered.
+      ++this.enterCounter;
 
-    // This is tricky. During the drag even the dataTransfer.files is null
-    // But Chrome implements some drag store, which is accesible via dataTransfer.items
-    const dataTransferItems = e.dataTransfer && e.dataTransfer.items ? e.dataTransfer.items : [];
+      // This is tricky. During the drag even the dataTransfer.files is null
+      // But Chrome implements some drag store, which is accesible via dataTransfer.items
+      const dataTransferItems = this.extractData(e);
 
-    // Now we need to convert the DataTransferList to Array
-    const allFilesAccepted = this.fileAccepted(Array.prototype.slice.call(dataTransferItems));
+      // Now we need to convert the DataTransferList to Array
+      const allFilesAccepted = this.fileAccepted(Array.prototype.slice.call(dataTransferItems));
 
-    this.setState({
-      isDragActive: allFilesAccepted,
-      isDragReject: !allFilesAccepted
-    });
+      this.setState({
+         isDragActive: allFilesAccepted,
+         borderStyle: 'dragBorder',
+         visibility: 'hide'
+         // isDragReject: !allFilesAccepted
+      });
 
-    if (this.props.onDragEnter) {
-      this.props.onDragEnter.call(this, e);
-    }
+      // let that;
+      // that = this;
+
+      allFilesAccepted ? this.successBorder() : this.warningBorder();
   }
 
    /**
@@ -62,15 +69,7 @@ export default class DropContainer extends React.Component {
       e.stopPropagation();
       e.dataTransfer.dropEffect = 'copy';
 
-      // this.setState({
-      //    isDragActive: true
-      // });
-
       return false;
-      // let $this = $(this.myTextInput),
-      //    label = 'please drag ';
-      // console.log($this);
-      // $this.attr('data-content', label);
    }
 
    /**
@@ -86,12 +85,14 @@ export default class DropContainer extends React.Component {
 
       this.setState({
          isDragActive: false,
-         isDragReject: false
+         isDragReject: false,
+         borderStyle: '',
+         visibility: 'show'
       });
 
-      if (this.props.onDragLeave) {
-         this.props.onDragLeave.call(this, e);
-      }
+      // if (this.props.onDragLeave) {
+      //    this.props.onDragLeave.call(this, e);
+      // }
   }
 
    /**
@@ -101,9 +102,10 @@ export default class DropContainer extends React.Component {
    onDrop (e) {
       e.preventDefault();
       this.setState({
-         isDragActive: false
+         isDragActive: false,
+         borderStyle: '',
+         visibility: 'show'
       });
-
       this.handleChange.call(this, e);
    }
 
@@ -111,7 +113,8 @@ export default class DropContainer extends React.Component {
       * Handle the click event on drop container
    */
    // onClick () {
-   //  this.refs.fileInput.myTextInput.click()
+   //    console.log('on click called');
+   //    this.refs.fileInput.myTextInput.click();
    // }
 
    /**
@@ -158,10 +161,12 @@ export default class DropContainer extends React.Component {
    }
 
    fileAccepted(file) {
-      console.log(file);
-      return file.every(f => accepts(f, this.props.accept));
+      return file.every(f => accepts(f, 'image/*'));
    }
 
+   extractData(e) {
+      return e.dataTransfer && e.dataTransfer.items ? e.dataTransfer.items : [];
+   }
    /**
       * Handle the button footer color
       * @param  {string} color
@@ -189,12 +194,24 @@ export default class DropContainer extends React.Component {
       return label;
    }
 
+   successBorder () {
+      this.setState({
+         borderStyle: 'successBorder'
+      });
+   }
+
+   warningBorder () {
+      this.setState({
+         borderStyle: 'warningBorder'
+      });
+   }
+
    render () {
       // define styles
       let color = this.props.buttonColor,
          text = this.props.buttonText,
-         borderStyle = this.state.isDragActive ? 'dragBorder' : '',
-         visibility = this.state.isDragActive ? 'hide' : 'show',
+         borderStyle = this.state.borderStyle,
+         visibility = this.state.visibility,
          outerClasses = classNames(css.groupWrapper, css[borderStyle]),
          innerClasses = classNames(css[visibility]);
 
@@ -206,6 +223,7 @@ export default class DropContainer extends React.Component {
             onDragLeave={this.onDragLeave}
             onDragStart={this.onDragStart}
             onDragEnter={this.onDragEnter}
+            onClick={this.onClick}
             onDrop={this.onDrop}>
             <section className={classNames(innerClasses, css.groupWrapper)}>
                <ImagePreview imgSrc={this.state.imageFile} />
