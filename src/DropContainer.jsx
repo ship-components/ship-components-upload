@@ -1,28 +1,27 @@
 import React from 'react';
 import classNames from 'classnames';
-import css from './button.css';
+// import $ from 'jquery';
 import accepts from 'attr-accept';
+import css from './button.css';
 
-import UploadButton from './UploadButton';
-import ImagePreview from './ImagePreview';
 
-export default class UploadContainer extends React.Component {
+export default class DropContainer extends React.Component {
    /**
       * Base Container
       * @param  {Object} props
    */
-   constructor(props) {
-      super(props);
+   constructor(props, context) {
+      super(props, context);
       this.state = {
-         imageFile: '',
          isDragActive: false
       };
-      this.handleChange = this.handleChange.bind(this);
+      console.log(this.props);
+      // this.handleChange = this.handleChange.bind(this);
       this.onDragOver = this.onDragOver.bind(this);
       this.onDrop = this.onDrop.bind(this);
       this.onDragLeave = this.onDragLeave.bind(this);
-      this.onDragEnter = this.onDragEnter.bind(this);
       // this.onDragStart = this.onDragStart.bind(this);
+      this.onDragEnter = this.onDragEnter.bind(this);
       // this.onClick = this.onClick.bind(this);
    }
 
@@ -157,77 +156,37 @@ export default class UploadContainer extends React.Component {
       return file.every(f => accepts(f, this.props.accept));
    }
 
-   /**
-      * Handle the button footer color
-      * @param  {string} color
-      * @return {string}
-   */
-   setColor (val = 'blue') {
-      let color = val.toLowerCase();
-
-      if(val === 'green') {
-         color = 'green';
-      }else if (val === 'gray') {
-         color = 'gray';
-      } else if ( val === 'white') {
-         color = 'white';
-      }
-      return color;
-   }
-
-   /**
-      * Handle the button label text
-      * @param  {string} label
-      * @return {string}
-   */
-   setText (label = 'Upload') {
-      return label;
-   }
+   // allFilesMatchSize(files) {
+   //    return files.every(file => (file.size <= this.props.maxSize && file.size >= this.props.minSize));
+   // }
 
    render () {
       // define styles
-      let color = this.props.buttonColor,
-         text = this.props.buttonText,
-         borderStyle = this.state.isDragActive ? 'dragBorder' : '',
-         visibility = this.state.isDragActive ? 'hide' : 'show',
-         outerClasses = classNames(css.groupWrapper, css[borderStyle]),
-         innerClasses = classNames(css[visibility]);
+      let borderStyle = this.state.isDragActive ? 'dragBorder' : '',
+         // visibility = this.state.isDragActive ? 'hide' : 'show',
+         outerClasses = classNames(css.groupWrapper, css[borderStyle]);
+         // innerClasses = classNames(css[visibility]);
 
       return (
-         <section className={classNames(css.wrapper)}>
-            <section
-               ref={(ref) => this.myTextInput = ref}
-               className={outerClasses}
-               onDragOver={this.onDragOver}
-               onDragLeave={this.onDragLeave}
-               onDragStart={this.onDragStart}
-               onDragEnter={this.onDragEnter}
-               onDrop={this.onDrop}>
-               <section className={classNames(innerClasses, css.groupWrapper)}>
-                  <ImagePreview imgSrc={this.state.imageFile} />
-                  <form className={classNames(css.flexContainer)}>
-                     <UploadButton
-                        ref='fileInput'
-                        accept='.png, .gif, .jpg, .jpeg'
-                        onChange={this.handleChange.bind(this)}
-                        color={this.setColor(color)}
-                        label={this.setText(text)}
-                     />
-                  </form>
-               </section>
-            </section>
-         </section>
+         <section
+            className={outerClasses}
+            onDragOver={this.onDragOver}
+            onDragLeave={this.onDragLeave}
+            onDragStart={this.onDragStart}
+            onDragEnter={this.onDragEnter}
+            onDrop={this.onDrop}>
+      </section>
       );
    }
 }
 
-const { string } = React.PropTypes;
+// const { string } = React.PropTypes;
 
 /**
  * Type Checks
  * @type {Object}
  */
-UploadContainer.propTypes = {
-  buttonColor: string,
-  buttonText: string
-};
+// DropContainer.propTypes = {
+//   buttonColor: string,
+//   buttonText: string
+// };

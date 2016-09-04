@@ -71,15 +71,16 @@ export default class UploadButton extends React.Component {
    }
 }
 
+const { string, func } = React.PropTypes;
 /**
  * Type Checks
  * @type {Object}
  */
 UploadButton.propTypes = {
-   accept: React.PropTypes.string.isRequired,
-   color: React.PropTypes.string,
-   label: React.PropTypes.string,
-   onChange: React.PropTypes.func
+   accept: string.isRequired,
+   color: string,
+   label: string,
+   onChange: func
 };
 
 /**

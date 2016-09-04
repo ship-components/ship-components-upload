@@ -26,12 +26,14 @@ export default class ImagePreview extends React.Component {
    }
 }
 
+const { string } = React.PropTypes;
+
 /**
  * Type Checks
  * @type {Object}
  */
 ImagePreview.propTypes = {
-   imgSrc: React.PropTypes.string
+   imgSrc: string
 };
 
 /**

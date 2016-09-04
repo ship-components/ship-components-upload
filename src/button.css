@@ -1,7 +1,5 @@
-* {
-  /*border: 1px solid black;*/
-  outline: 0 !important;
-}
+* { outline: 0 !important; }
+
 body {
   background-color: #f9f9f9;
   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
@@ -14,34 +12,47 @@ body {
   -webkit-touch-callout: none;
 }
 
+form {
+  width: 50%;
+  padding: 5px;
+  float: right;
+  margin: 1rem;
+}
+
 .wrapper {
   margin: 20px auto;
   position: relative;
   height: 100px;
-  border: 1px dashed black;
-
 }
+/*
+.wrapper:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+}*/
 
 .groupWrapper {
   margin: 5px auto;
   height: 80%;
   position: relative;
   width: 100%;
-
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: inline-flex;
-
   justify-content: space-around;
 }
 
-form {
-  width: 50%;
-  padding: 5px;
-  float: right;
-  margin: 1rem;
+.dragBorder {
+  border: 1px dashed black;
+  /*box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);*/
+}
+
+.activeBorder {
+  border: 1px solid green;
+}
+
+.warningBorder {
+  border: 1px solid red;
 }
 
 .flexItem {
@@ -136,11 +147,15 @@ form {
 }
 
 .hide {
-  visibility: hidden;
+  display: none;
 }
 
 .show {
-  visibility: visible;
+  display: show;
+}
+
+.some::before {
+  content: attr(data-content);
 }
 
 
