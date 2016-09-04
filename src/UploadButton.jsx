@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import css from './button.css';
 import $ from 'jquery';
+
+import css from './button.css';
 
 export default class UploadButton extends React.Component {
    /**
@@ -71,21 +72,15 @@ export default class UploadButton extends React.Component {
    }
 }
 
-const { string, func } = React.PropTypes;
 /**
  * Type Checks
  * @type {Object}
  */
+const { string, func } = React.PropTypes;
+
 UploadButton.propTypes = {
    accept: string.isRequired,
    color: string,
    label: string,
    onChange: func
-};
-
-/**
- * Defaults
- * @type {Object}
- */
-UploadButton.defaultProps = {
 };

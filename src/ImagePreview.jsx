@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import css from './button.css';
 
 export default class ImagePreview extends React.Component {
@@ -26,19 +27,12 @@ export default class ImagePreview extends React.Component {
    }
 }
 
-const { string } = React.PropTypes;
-
 /**
  * Type Checks
  * @type {Object}
  */
+const { string } = React.PropTypes;
+
 ImagePreview.propTypes = {
    imgSrc: string
-};
-
-/**
- * Defaults
- * @type {Object}
- */
-ImagePreview.defaultProps = {
 };
