@@ -12,6 +12,7 @@ export default class UploadContainer extends React.Component {
             <DropContainer
                buttonColor={this.props.buttonColor}
                buttonText={this.props.buttonText}
+               backgroundColor={this.props.backgroundColor}
             />
          </section>
       );

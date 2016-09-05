@@ -30,6 +30,7 @@ form {
 }*/
 
 .groupWrapper {
+  background-color: transparent;
   margin: 5px auto;
   height: 80%;
   position: relative;
@@ -169,6 +170,7 @@ form {
   height: 60px;
   vertical-align: middle;
   border-radius: 15px;
+  z-index: 2;
 }
 
 .hide {

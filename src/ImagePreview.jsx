@@ -18,12 +18,18 @@ export default class ImagePreview extends React.Component {
    }
 
    render() {
-      console.log(this.props);
+      // console.log(this.props);
       return (
-         <img
-            src={this.props.imgSrc}
-            className={this.toggleImage()}
-         />
+         <div>
+            <img
+               src={this.props.imgSrc}
+               className={this.toggleImage()}
+            />
+            <img
+               src=''
+               className={classNames(css.deleteImage)}
+            />
+         </div>
       );
    }
 }

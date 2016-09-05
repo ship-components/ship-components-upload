@@ -22,18 +22,30 @@ export default class DropContainer extends React.Component {
          borderStyle: '',
          visibility: 'show'
       };
+
       this.handleChange = this.handleChange.bind(this);
       this.onDragOver = this.onDragOver.bind(this);
       this.onDrop = this.onDrop.bind(this);
       this.onDragLeave = this.onDragLeave.bind(this);
       this.onDragEnter = this.onDragEnter.bind(this);
-      this.mouseHover = this.mouseHover.bind(this);
-      // this.onDragStart = this.onDragStart.bind(this);
+      this.onDragStart = this.onDragStart.bind(this);
       // this.onClick = this.onClick.bind(this);
    }
 
    componentDidMount() {
       this.enterCounter = 0;
+      // Change the background color of
+      // outer section with the prop color
+      // passing in
+      let $this = $(this.myTextInput)[0],
+         color = this.props.backgroundColor;
+      $($this).css('background-color', color);
+   }
+
+   onDragStart(e) {
+      if (this.props.onDragStart) {
+         this.props.onDragStart.call(this, e);
+      }
    }
 
    onDragEnter(e) {
@@ -93,9 +105,14 @@ export default class DropContainer extends React.Component {
          visibility: 'show'
       });
 
-      // if (this.props.onDragLeave) {
-      //    this.props.onDragLeave.call(this, e);
-      // }
+      if (this.props.onDragLeave) {
+         this.props.onDragLeave.call(this, e);
+      }
+
+      if(this.state.imageFile){
+         console.log('onDragLeave');
+         return;
+      }
   }
 
    /**
@@ -120,19 +137,6 @@ export default class DropContainer extends React.Component {
    //    this.refs.fileInput.myTextInput.click();
    // }
 
-   mouseHover () {
-      let that = this;
-      $('img').on('mouseEnter', function(e){
-         e.preventDefault();
-         console.log('hello');
-
-         that.setState({
-         imageFile: 'https://lh3.googleusercontent.com/G2jzG8a6-GAA4yhxx3XMJfPXsm6_pluyeEWKr9I5swUGF62d2xo_Qg3Kdnu00HAmDQ=w300'
-         });
-      });
-
-
-   }
    /**
       * Handle the image state
       * If image is available, will create a URL obj
@@ -237,7 +241,6 @@ export default class DropContainer extends React.Component {
          visibility = this.state.visibility,
          outerClasses = classNames(css.groupWrapper, css[borderStyle]),
          innerClasses = classNames(css[visibility]);
-
       return (
          <section
             ref={(ref) => this.myTextInput = ref}
@@ -251,8 +254,6 @@ export default class DropContainer extends React.Component {
             <section className={classNames(innerClasses, css.groupWrapper)}>
                <ImagePreview
                   imgSrc={this.state.imageFile}
-                  mouseHover={this.mouseHover}
-                  mouseLeave={this.mouseLeave}
                />
                <form className={classNames(css.flexContainer)}>
                   <UploadButton
