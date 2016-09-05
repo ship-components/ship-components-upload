@@ -1,12 +1,12 @@
 {
   "name": "ship-components-upload",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Upload button component",
   "main": "src/index.js",
   "scripts": {
     "start": "grunt server",
     "build": "grunt build",
-    "test": "./node_modules/jest-cli/bin/jest.js src/ --coverage",
+    "test": "./node_modules/jest-cli/bin/jest.js src/js --coverage",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v"
   },
   "repository": {
@@ -60,10 +60,8 @@
     "postcss-simple-vars": "^1.1.0",
     "react": "^0.14.2",
     "react-addons-css-transition-group": "^0.14.2",
-    "react-addons-test-utils": "^0.14.2",
+    "react-addons-test-utils": "^0.14.8",
     "react-dom": "^0.14.2",
-    "react-dropzone": "^3.6.0",
-    "ship-components-highlight-click": "^0.1.4",
     "strict-loader": "^0.1.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.13.2",
