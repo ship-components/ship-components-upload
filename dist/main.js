@@ -84,7 +84,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"wrapper":"button--wrapper","groupWrapper":"button--groupWrapper","dragBorder":"button--dragBorder","successBorder":"button--successBorder","warningBorder":"button--warningBorder","flexItem":"button--flexItem","input":"button--input","btn":"button--btn","blue":"button--blue","green":"button--green","gray":"button--gray","white":"button--white","raised":"button--raised","img":"button--img","hide":"button--hide","show":"button--show","some":"button--some"};
 
 /***/ },
 /* 2 */
@@ -10224,9 +10223,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _button = __webpack_require__(1);
+	var _styles = __webpack_require__(1);
 	
-	var _button2 = _interopRequireDefault(_button);
+	var _styles2 = _interopRequireDefault(_styles);
 	
 	var _UploadButton = __webpack_require__(8);
 	
@@ -10276,13 +10275,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	         borderStyle: '',
 	         visibility: 'show'
 	      };
+	
 	      _this.handleChange = _this.handleChange.bind(_this);
 	      _this.onDragOver = _this.onDragOver.bind(_this);
 	      _this.onDrop = _this.onDrop.bind(_this);
 	      _this.onDragLeave = _this.onDragLeave.bind(_this);
 	      _this.onDragEnter = _this.onDragEnter.bind(_this);
-	      _this.mouseHover = _this.mouseHover.bind(_this);
-	      // this.onDragStart = this.onDragStart.bind(this);
+	      _this.onDragStart = _this.onDragStart.bind(_this);
 	      // this.onClick = this.onClick.bind(this);
 	      return _this;
 	   }
@@ -10291,6 +10290,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      key: 'componentDidMount',
 	      value: function componentDidMount() {
 	         this.enterCounter = 0;
+	         // Change the background color of
+	         // outer section with the prop color
+	         // passing in
+	         var $this = (0, _jquery2.default)(this.myTextInput)[0],
+	             color = this.props.backgroundColor;
+	         (0, _jquery2.default)($this).css('background-color', color);
+	      }
+	   }, {
+	      key: 'onDragStart',
+	      value: function onDragStart(e) {
+	         if (this.props.onDragStart) {
+	            this.props.onDragStart.call(this, e);
+	         }
 	      }
 	   }, {
 	      key: 'onDragEnter',
@@ -10357,9 +10369,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            visibility: 'show'
 	         });
 	
-	         // if (this.props.onDragLeave) {
-	         //    this.props.onDragLeave.call(this, e);
-	         // }
+	         if (this.props.onDragLeave) {
+	            this.props.onDragLeave.call(this, e);
+	         }
+	
+	         if (this.state.imageFile) {
+	            console.log('onDragLeave');
+	            return;
+	         }
 	      }
 	
 	      /**
@@ -10387,19 +10404,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      //    this.refs.fileInput.myTextInput.click();
 	      // }
 	
-	   }, {
-	      key: 'mouseHover',
-	      value: function mouseHover() {
-	         var that = this;
-	         (0, _jquery2.default)('img').on('mouseEnter', function (e) {
-	            e.preventDefault();
-	            console.log('hello');
-	
-	            that.setState({
-	               imageFile: 'https://lh3.googleusercontent.com/G2jzG8a6-GAA4yhxx3XMJfPXsm6_pluyeEWKr9I5swUGF62d2xo_Qg3Kdnu00HAmDQ=w300'
-	            });
-	         });
-	      }
 	      /**
 	         * Handle the image state
 	         * If image is available, will create a URL obj
@@ -10525,9 +10529,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	             text = this.props.buttonText,
 	             borderStyle = this.state.borderStyle,
 	             visibility = this.state.visibility,
-	             outerClasses = (0, _classnames2.default)(_button2.default.groupWrapper, _button2.default[borderStyle]),
-	             innerClasses = (0, _classnames2.default)(_button2.default[visibility]);
-	
+	             outerClasses = (0, _classnames2.default)(_styles2.default.groupWrapper, _styles2.default[borderStyle]),
+	             innerClasses = (0, _classnames2.default)(_styles2.default[visibility]);
 	         return _react2.default.createElement('section', {
 	            ref: function ref(_ref) {
 	               return _this2.myTextInput = _ref;
@@ -10538,11 +10541,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onDragStart: this.onDragStart,
 	            onDragEnter: this.onDragEnter,
 	            onClick: this.onClick,
-	            onDrop: this.onDrop }, _react2.default.createElement('section', { className: (0, _classnames2.default)(innerClasses, _button2.default.groupWrapper) }, _react2.default.createElement(_ImagePreview2.default, {
-	            imgSrc: this.state.imageFile,
-	            mouseHover: this.mouseHover,
-	            mouseLeave: this.mouseLeave
-	         }), _react2.default.createElement('form', { className: (0, _classnames2.default)(_button2.default.flexContainer) }, _react2.default.createElement(_UploadButton2.default, {
+	            onDrop: this.onDrop }, _react2.default.createElement('section', { className: (0, _classnames2.default)(innerClasses, _styles2.default.groupWrapper) }, _react2.default.createElement(_ImagePreview2.default, {
+	            imgSrc: this.state.imageFile
+	         }), _react2.default.createElement('form', { className: (0, _classnames2.default)(_styles2.default.flexContainer) }, _react2.default.createElement(_UploadButton2.default, {
 	            ref: 'fileInput',
 	            accept: '.png, .gif, .jpg, .jpeg',
 	            onChange: this.handleChange.bind(this),
@@ -10598,9 +10599,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _button = __webpack_require__(1);
+	var _styles = __webpack_require__(1);
 	
-	var _button2 = _interopRequireDefault(_button);
+	var _styles2 = _interopRequireDefault(_styles);
 	
 	function _interopRequireDefault(obj) {
 	   return obj && obj.__esModule ? obj : { default: obj };
@@ -10643,18 +10644,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	      */
 	      value: function toggleImage() {
 	         var image = this.props.imgSrc,
-	             imgShow = (0, _classnames2.default)(_button2.default.img, _button2.default.show),
-	             imgHide = (0, _classnames2.default)(_button2.default.img, _button2.default.hide);
+	             imgShow = (0, _classnames2.default)(_styles2.default.img, _styles2.default.show),
+	             imgHide = (0, _classnames2.default)(_styles2.default.img, _styles2.default.hide);
 	         return image === '' ? imgHide : imgShow;
 	      }
 	   }, {
 	      key: 'render',
 	      value: function render() {
-	         console.log(this.props);
-	         return _react2.default.createElement('img', {
+	         // console.log(this.props);
+	         return _react2.default.createElement('div', null, _react2.default.createElement('img', {
 	            src: this.props.imgSrc,
 	            className: this.toggleImage()
-	         });
+	         }), _react2.default.createElement('img', {
+	            src: '',
+	            className: (0, _classnames2.default)(_styles2.default.deleteImage)
+	         }));
 	      }
 	   }]);
 	
@@ -10707,9 +10711,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _button = __webpack_require__(1);
+	var _styles = __webpack_require__(1);
 	
-	var _button2 = _interopRequireDefault(_button);
+	var _styles2 = _interopRequireDefault(_styles);
 	
 	function _interopRequireDefault(obj) {
 	   return obj && obj.__esModule ? obj : { default: obj };
@@ -10787,7 +10791,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         // let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
 	         var color = this.props.color;
 	
-	         var btnClasses = (0, _classnames2.default)(_button2.default.btn, _button2.default.raised, _button2.default.flexItem, _button2.default.input, _button2.default[color]);
+	         var btnClasses = (0, _classnames2.default)(_styles2.default.btn, _styles2.default.raised, _styles2.default.flexItem, _styles2.default.input, _styles2.default[color]);
 	         // Construct props
 	         // let props = {
 	         //    disabled: this.props.disabled,
@@ -10861,9 +10865,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _button = __webpack_require__(1);
+	var _styles = __webpack_require__(1);
 	
-	var _button2 = _interopRequireDefault(_button);
+	var _styles2 = _interopRequireDefault(_styles);
 	
 	var _DropContainer = __webpack_require__(6);
 	
@@ -10903,9 +10907,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	   _createClass(UploadContainer, [{
 	      key: 'render',
 	      value: function render() {
-	         return _react2.default.createElement('section', { className: (0, _classnames2.default)(_button2.default.wrapper) }, _react2.default.createElement(_DropContainer2.default, {
+	         return _react2.default.createElement('section', { className: (0, _classnames2.default)(_styles2.default.wrapper) }, _react2.default.createElement(_DropContainer2.default, {
 	            buttonColor: this.props.buttonColor,
-	            buttonText: this.props.buttonText
+	            buttonText: this.props.buttonText,
+	            backgroundColor: this.props.backgroundColor
 	         }));
 	      }
 	   }]);

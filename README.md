@@ -1,13 +1,13 @@
-# ship-components-upload
-Upload button component
+# ship-components-dropzone
+Upload button / Drag & Drop component
 
-# ship-components-buttons
-[React](http://facebook.github.io/react/) buttons. Exports a commonjs module that can be used with [webpack](http://webpack.github.io/). Source is in ES6 and is compiled down to ES5 using [Babel](https://babeljs.io/).
+# ship-components-dropzone
+[React](http://facebook.github.io/react/) Upload component (Drag & Drop). Exports a commonjs module that can be used with [webpack](http://webpack.github.io/). Source is in ES6 and is compiled down to ES5 using [Babel](https://babeljs.io/).
 
-[![npm](https://img.shields.io/npm/v/ship-components-buttons.svg?maxAge=2592000)](https://www.npmjs.com/package/ship-components-buttons)
-[![Build Status](http://img.shields.io/travis/ship-components/ship-components-buttons/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-buttons)
-[![Coverage](http://img.shields.io/coveralls/ship-components/ship-components-buttons.svg?style=flat)](https://coveralls.io/github/ship-components)
-[![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-buttons.svg?style=flat)](https://david-dm.org/ship-components/ship-components-buttons?type=dev)
+[![npm](https://img.shields.io/npm/v/ship-components-dropzone.svg?maxAge=2592000)](https://www.npmjs.com/package/ship-components-dropzone)
+[![Build Status](http://img.shields.io/travis/ship-components/ship-components-dropzone/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-dropzone)
+[![Coverage](http://img.shields.io/coveralls/ship-components/ship-components-dropzone.svg?style=flat)](https://coveralls.io/github/ship-components)
+[![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-dropzone.svg?style=flat)](https://david-dm.org/ship-components/ship-components-dropzone?type=dev)
 
 ## Usage
 
@@ -15,7 +15,7 @@ Upload button component
 The component is written using ES6/JSX therefore Babel is recommended to use it. The below example is based on using [webpack](http://webpack.github.io/) and [babel-loader](https://github.com/babel/babel-loader).
 ```js
 import React from 'react';
-import { Button } from 'ship-components-buttons';
+import { dropzone } from 'ship-components-dropzone';
 
 export default class Dialog extends React.Component {
   constructor(props) {
@@ -32,18 +32,23 @@ export default class Dialog extends React.Component {
   }
 
   render() {
-    return (
-        <div className='form-group'>
-          <Button onClick={this.handleClick.bind(this)}>
-            Click Me!
-          </Button>
-        </div>
-    );
+    <div>
+      <h1>Upload Button Examples</h1>
+      <div className='example-group'>
+        <h2>Material Blue Button</h2>
+        <UploadContainer
+           buttonText='Upload'
+           backgroundColor='#d23f31'
+        />
+      </div>
+    </div>
   }
 }
 ```
 
 ## Examples and Development
+![Sample Demo](https://s14.postimg.org/woo35ndht/ezgif_com_video_to_gif.gif)
+
 Examples can be found in the `examples/` folder. A development server can be run with:
 
 ```shell
@@ -101,14 +106,8 @@ Below are is a sample of how to setup the loaders:
 
 ## Tests
 
-*There's currently a bug in Jest, so the units tests and they will not run.*
-
 1. `npm install`
 2. `npm test`
-
-## History
-0.1.1 - Fixed css issues and broken tests
-0.1.0 - Initial
 
 ## License
 The MIT License (MIT)

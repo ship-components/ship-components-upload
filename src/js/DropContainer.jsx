@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import accepts from 'attr-accept';
 import $ from 'jquery';
 
-import css from './button.css';
+import css from '../stylesheets/button.css';
 import UploadButton from './UploadButton';
 import ImagePreview from './ImagePreview';
 
@@ -22,7 +22,6 @@ export default class DropContainer extends React.Component {
          borderStyle: '',
          visibility: 'show'
       };
-
       this.handleChange = this.handleChange.bind(this);
       this.onDragOver = this.onDragOver.bind(this);
       this.onDrop = this.onDrop.bind(this);
@@ -110,7 +109,7 @@ export default class DropContainer extends React.Component {
       }
 
       if(this.state.imageFile){
-         console.log('onDragLeave');
+         // console.log('onDragLeave');
          return;
       }
   }
@@ -159,7 +158,7 @@ export default class DropContainer extends React.Component {
 
             if(evt !== undefined) {
                imageFile = URL.createObjectURL(evt);
-               console.log('**DRAGGED** SELECTED FILE', evt);
+               // console.log('**DRAGGED** SELECTED FILE', evt);
                this.setState({
                   imageFile: imageFile
                });
@@ -175,7 +174,7 @@ export default class DropContainer extends React.Component {
             // Image src to pass it to ImagePreview Component
             if(evt !== undefined) {
                imageFile = URL.createObjectURL(event.target.files[0]);
-               console.log('SELECTED FILE', event.target.files[0]);
+               // console.log('SELECTED FILE', event.target.files[0]);
 
                this.setState({
                   imageFile: imageFile

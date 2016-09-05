@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import css from './button.css';
+import css from '../stylesheets/button.css';
 
 export default class ImagePreview extends React.Component {
 

@@ -4,7 +4,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { UploadContainer } from '../src';
+import { UploadContainer } from '../src/js';
 
 class UploadButtonExamples extends React.Component {
   render() {
@@ -15,7 +15,6 @@ class UploadButtonExamples extends React.Component {
             <h2>Material Blue Button</h2>
             <UploadContainer
                buttonText='Upload'
-               backgroundColor='#d23f31'
             />
          </div>
          <div className='example-group'>
@@ -39,7 +38,7 @@ class UploadButtonExamples extends React.Component {
             <UploadContainer
                buttonColor='white'
                buttonText='Press'
-               backgroundColor='#212121'
+               backgroundColor='#d23f31'
             />
          </div>
       </div>

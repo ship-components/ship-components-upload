@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import $ from 'jquery';
 
-import css from './button.css';
+import css from '../stylesheets/button.css';
 
 export default class UploadButton extends React.Component {
    /**
