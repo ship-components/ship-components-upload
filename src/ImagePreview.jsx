@@ -18,6 +18,7 @@ export default class ImagePreview extends React.Component {
    }
 
    render() {
+      console.log(this.props);
       return (
          <img
             src={this.props.imgSrc}

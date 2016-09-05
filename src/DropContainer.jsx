@@ -3,6 +3,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import accepts from 'attr-accept';
+import $ from 'jquery';
 
 import css from './button.css';
 import UploadButton from './UploadButton';
@@ -26,6 +27,7 @@ export default class DropContainer extends React.Component {
       this.onDrop = this.onDrop.bind(this);
       this.onDragLeave = this.onDragLeave.bind(this);
       this.onDragEnter = this.onDragEnter.bind(this);
+      this.mouseHover = this.mouseHover.bind(this);
       // this.onDragStart = this.onDragStart.bind(this);
       // this.onClick = this.onClick.bind(this);
    }
@@ -54,7 +56,11 @@ export default class DropContainer extends React.Component {
          // isDragReject: !allFilesAccepted
       });
 
-      allFilesAccepted ? this.successBorder() : this.warningBorder();
+      if (allFilesAccepted) {
+         this.successBorder()
+      } else {
+         this.warningBorder();
+      }
   }
 
    /**
@@ -114,6 +120,19 @@ export default class DropContainer extends React.Component {
    //    this.refs.fileInput.myTextInput.click();
    // }
 
+   mouseHover () {
+      let that = this;
+      $('img').on('mouseEnter', function(e){
+         e.preventDefault();
+         console.log('hello');
+
+         that.setState({
+         imageFile: 'https://lh3.googleusercontent.com/G2jzG8a6-GAA4yhxx3XMJfPXsm6_pluyeEWKr9I5swUGF62d2xo_Qg3Kdnu00HAmDQ=w300'
+         });
+      });
+
+
+   }
    /**
       * Handle the image state
       * If image is available, will create a URL obj
@@ -126,6 +145,8 @@ export default class DropContainer extends React.Component {
       const dataTransferItems = this.extractData(event);
       const allFilesAccepted = this.fileAccepted(Array.prototype.slice.call(dataTransferItems));
 
+      // Check to make sure the dropped file
+      // is in image format - image/*
       if(allFilesAccepted){
          // Setting the state image source
          // With drag & drop event
@@ -228,7 +249,11 @@ export default class DropContainer extends React.Component {
             onClick={this.onClick}
             onDrop={this.onDrop}>
             <section className={classNames(innerClasses, css.groupWrapper)}>
-               <ImagePreview imgSrc={this.state.imageFile} />
+               <ImagePreview
+                  imgSrc={this.state.imageFile}
+                  mouseHover={this.mouseHover}
+                  mouseLeave={this.mouseLeave}
+               />
                <form className={classNames(css.flexContainer)}>
                   <UploadButton
                      ref='fileInput'

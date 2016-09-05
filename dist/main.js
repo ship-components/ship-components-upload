@@ -56,12 +56,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
+	/** ****************************************************************************
+	 * Drag & Drop Component
+	 *
+	 * @author       Sepand Assadi <sepand_assadi@playstation.sony.com>
+	 * @file         Helper file for importing Buttons
+	 * @example      import { UploadContainer } from 'react-buttons/src';
+	 ******************************************************************************/
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.UploadContainer = undefined;
 	
-	var _UploadContainer = __webpack_require__(7);
+	var _UploadContainer = __webpack_require__(9);
 	
 	var _UploadContainer2 = _interopRequireDefault(_UploadContainer);
 	
@@ -69,16 +77,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 	
-	var UploadContainer = exports.UploadContainer = _UploadContainer2.default;
-	
-	exports.default = UploadContainer;
+	var UploadContainer = exports.UploadContainer = _UploadContainer2.default;exports.default = UploadContainer;
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"wrapper":"button--wrapper","groupWrapper":"button--groupWrapper","dragBorder":"button--dragBorder","activeBorder":"button--activeBorder","warningBorder":"button--warningBorder","flexItem":"button--flexItem","input":"button--input","btn":"button--btn","blue":"button--blue","green":"button--green","gray":"button--gray","white":"button--white","raised":"button--raised","img":"button--img","hide":"button--hide","show":"button--show","some":"button--some"};
+	module.exports = {"wrapper":"button--wrapper","groupWrapper":"button--groupWrapper","dragBorder":"button--dragBorder","successBorder":"button--successBorder","warningBorder":"button--warningBorder","flexItem":"button--flexItem","input":"button--input","btn":"button--btn","blue":"button--blue","green":"button--green","gray":"button--gray","white":"button--white","raised":"button--raised","img":"button--img","hide":"button--hide","show":"button--show","some":"button--some"};
 
 /***/ },
 /* 2 */
@@ -94,614 +100,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 4 */
-/***/ function(module, exports) {
-
-	module.exports=function(t){function n(e){if(r[e])return r[e].exports;var o=r[e]={exports:{},id:e,loaded:!1};return t[e].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var r={};return n.m=t,n.c=r,n.p="",n(0)}([function(t,n,r){"use strict";n.__esModule=!0,r(8),r(9),n["default"]=function(t,n){if(t&&n){var r=function(){var r=n.split(","),e=t.name||"",o=t.type||"",i=o.replace(/\/.*$/,"");return{v:r.some(function(t){var n=t.trim();return"."===n.charAt(0)?e.toLowerCase().endsWith(n.toLowerCase()):/\/\*$/.test(n)?i===n.replace(/\/.*$/,""):o===n})}}();if("object"==typeof r)return r.v}return!0},t.exports=n["default"]},function(t,n){var r=t.exports={version:"1.2.2"};"number"==typeof __e&&(__e=r)},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n,r){var e=r(2),o=r(1),i=r(4),u=r(19),c="prototype",f=function(t,n){return function(){return t.apply(n,arguments)}},s=function(t,n,r){var a,p,l,d,y=t&s.G,h=t&s.P,v=y?e:t&s.S?e[n]||(e[n]={}):(e[n]||{})[c],x=y?o:o[n]||(o[n]={});y&&(r=n);for(a in r)p=!(t&s.F)&&v&&a in v,l=(p?v:r)[a],d=t&s.B&&p?f(l,e):h&&"function"==typeof l?f(Function.call,l):l,v&&!p&&u(v,a,l),x[a]!=l&&i(x,a,d),h&&((x[c]||(x[c]={}))[a]=l)};e.core=o,s.F=1,s.G=2,s.S=4,s.P=8,s.B=16,s.W=32,t.exports=s},function(t,n,r){var e=r(5),o=r(18);t.exports=r(22)?function(t,n,r){return e.setDesc(t,n,o(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n){var r=Object;t.exports={create:r.create,getProto:r.getPrototypeOf,isEnum:{}.propertyIsEnumerable,getDesc:r.getOwnPropertyDescriptor,setDesc:r.defineProperty,setDescs:r.defineProperties,getKeys:r.keys,getNames:r.getOwnPropertyNames,getSymbols:r.getOwnPropertySymbols,each:[].forEach}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(20)("wks"),o=r(2).Symbol;t.exports=function(t){return e[t]||(e[t]=o&&o[t]||(o||r(6))("Symbol."+t))}},function(t,n,r){r(26),t.exports=r(1).Array.some},function(t,n,r){r(25),t.exports=r(1).String.endsWith},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n,r){var e=r(10);t.exports=function(t,n,r){if(e(t),void 0===n)return t;switch(r){case 1:return function(r){return t.call(n,r)};case 2:return function(r,e){return t.call(n,r,e)};case 3:return function(r,e,o){return t.call(n,r,e,o)}}return function(){return t.apply(n,arguments)}}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,r){t.exports=function(t){var n=/./;try{"/./"[t](n)}catch(e){try{return n[r(7)("match")]=!1,!"/./"[t](n)}catch(o){}}return!0}},function(t,n){t.exports=function(t){try{return!!t()}catch(n){return!0}}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n,r){var e=r(16),o=r(11),i=r(7)("match");t.exports=function(t){var n;return e(t)&&(void 0!==(n=t[i])?!!n:"RegExp"==o(t))}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,r){var e=r(2),o=r(4),i=r(6)("src"),u="toString",c=Function[u],f=(""+c).split(u);r(1).inspectSource=function(t){return c.call(t)},(t.exports=function(t,n,r,u){"function"==typeof r&&(o(r,i,t[n]?""+t[n]:f.join(String(n))),"name"in r||(r.name=n)),t===e?t[n]=r:(u||delete t[n],o(t,n,r))})(Function.prototype,u,function(){return"function"==typeof this&&this[i]||c.call(this)})},function(t,n,r){var e=r(2),o="__core-js_shared__",i=e[o]||(e[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n,r){var e=r(17),o=r(13);t.exports=function(t,n,r){if(e(n))throw TypeError("String#"+r+" doesn't accept regex!");return String(o(t))}},function(t,n,r){t.exports=!r(15)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?e:r)(t)}},function(t,n,r){var e=r(23),o=Math.min;t.exports=function(t){return t>0?o(e(t),9007199254740991):0}},function(t,n,r){"use strict";var e=r(3),o=r(24),i=r(21),u="endsWith",c=""[u];e(e.P+e.F*r(14)(u),"String",{endsWith:function(t){var n=i(this,t,u),r=arguments,e=r.length>1?r[1]:void 0,f=o(n.length),s=void 0===e?f:Math.min(o(e),f),a=String(t);return c?c.call(n,a,s):n.slice(s-a.length,s)===a}})},function(t,n,r){var e=r(5),o=r(3),i=r(1).Array||Array,u={},c=function(t,n){e.each.call(t.split(","),function(t){void 0==n&&t in i?u[t]=i[t]:t in[]&&(u[t]=r(12)(Function.call,[][t],n))})};c("pop,reverse,shift,keys,values,entries",1),c("indexOf,every,some,forEach,map,filter,find,findIndex,includes",3),c("join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill"),o(o.S,"Array",u)}]);
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-	
-	Object.defineProperty(exports, "__esModule", {
-	   value: true
-	});
-	
-	var _createClass = function () {
-	   function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	         var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	   }return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	   };
-	}();
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(3);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _button = __webpack_require__(1);
-	
-	var _button2 = _interopRequireDefault(_button);
-	
-	function _interopRequireDefault(obj) {
-	   return obj && obj.__esModule ? obj : { default: obj };
-	}
-	
-	function _classCallCheck(instance, Constructor) {
-	   if (!(instance instanceof Constructor)) {
-	      throw new TypeError("Cannot call a class as a function");
-	   }
-	}
-	
-	function _possibleConstructorReturn(self, call) {
-	   if (!self) {
-	      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	   }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	}
-	
-	function _inherits(subClass, superClass) {
-	   if (typeof superClass !== "function" && superClass !== null) {
-	      throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
-	
-	var ImagePreview = function (_React$Component) {
-	   _inherits(ImagePreview, _React$Component);
-	
-	   function ImagePreview() {
-	      _classCallCheck(this, ImagePreview);
-	
-	      return _possibleConstructorReturn(this, (ImagePreview.__proto__ || Object.getPrototypeOf(ImagePreview)).apply(this, arguments));
-	   }
-	
-	   _createClass(ImagePreview, [{
-	      key: 'toggleImage',
-	
-	      /**
-	         * Find out if image src is available
-	         * If not hide the image area otherwise show the image
-	         * @return {String}
-	      */
-	      value: function toggleImage() {
-	         var image = this.props.imgSrc,
-	             imgShow = (0, _classnames2.default)(_button2.default.img, _button2.default.show),
-	             imgHide = (0, _classnames2.default)(_button2.default.img, _button2.default.hide);
-	         return image === '' ? imgHide : imgShow;
-	      }
-	   }, {
-	      key: 'render',
-	      value: function render() {
-	         return _react2.default.createElement('img', {
-	            src: this.props.imgSrc,
-	            className: this.toggleImage()
-	         });
-	      }
-	   }]);
-	
-	   return ImagePreview;
-	}(_react2.default.Component);
-	
-	exports.default = ImagePreview;
-	var string = _react2.default.PropTypes.string;
-	
-	/**
-	 * Type Checks
-	 * @type {Object}
-	 */
-	
-	ImagePreview.propTypes = {
-	   imgSrc: string
-	};
-	
-	/**
-	 * Defaults
-	 * @type {Object}
-	 */
-	ImagePreview.defaultProps = {};
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-	
-	Object.defineProperty(exports, "__esModule", {
-	   value: true
-	});
-	
-	var _createClass = function () {
-	   function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	         var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	   }return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	   };
-	}();
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(3);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _button = __webpack_require__(1);
-	
-	var _button2 = _interopRequireDefault(_button);
-	
-	var _jquery = __webpack_require__(8);
-	
-	var _jquery2 = _interopRequireDefault(_jquery);
-	
-	function _interopRequireDefault(obj) {
-	   return obj && obj.__esModule ? obj : { default: obj };
-	}
-	
-	function _classCallCheck(instance, Constructor) {
-	   if (!(instance instanceof Constructor)) {
-	      throw new TypeError("Cannot call a class as a function");
-	   }
-	}
-	
-	function _possibleConstructorReturn(self, call) {
-	   if (!self) {
-	      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	   }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	}
-	
-	function _inherits(subClass, superClass) {
-	   if (typeof superClass !== "function" && superClass !== null) {
-	      throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
-	
-	var UploadButton = function (_React$Component) {
-	   _inherits(UploadButton, _React$Component);
-	
-	   /**
-	      * Base Button
-	      * @param  {Object} props
-	   */
-	   function UploadButton(props) {
-	      _classCallCheck(this, UploadButton);
-	
-	      var _this = _possibleConstructorReturn(this, (UploadButton.__proto__ || Object.getPrototypeOf(UploadButton)).call(this, props));
-	
-	      _this.state = {
-	         buttonLabel: ''
-	      };
-	      _this.handleChange = _this.handleChange.bind(_this);
-	      return _this;
-	   }
-	
-	   /**
-	      * Handle the button text label after component rendered
-	   */
-	
-	   _createClass(UploadButton, [{
-	      key: 'componentDidMount',
-	      value: function componentDidMount() {
-	         var $this = (0, _jquery2.default)(this.myTextInput),
-	             label = this.props.label;
-	         $this.attr('data-content', label);
-	      }
-	
-	      /**
-	         * Handle the button state
-	         * @param  {Event]} event
-	      */
-	
-	   }, {
-	      key: 'handleChange',
-	      value: function handleChange(e) {
-	         this.setState({
-	            buttonLabel: e.target.value.split(/(\\|\/)/g).pop()
-	         });
-	         if (this.props.onChange) {
-	            this.props.onChange(e);
-	         }
-	      }
-	   }, {
-	      key: 'render',
-	      value: function render() {
-	         var _this2 = this;
-	
-	         // let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
-	         var color = this.props.color;
-	
-	         var btnClasses = (0, _classnames2.default)(_button2.default.btn, _button2.default.raised, _button2.default.flexItem, _button2.default.input, _button2.default[color]);
-	         // Construct props
-	         // let props = {
-	         //    disabled: this.props.disabled,
-	         //    ref:'container',
-	         //    className: btnClasses,
-	         //    color: this.props.color,
-	         //    onMouseEnter: this.handleMouseEnter,
-	         //    onMouseLeave: this.handleMouseLeave,
-	         //    onClick: this.handleClick
-	         // }
-	
-	         return _react2.default.createElement('input', { type: 'file',
-	            ref: function ref(_ref) {
-	               return _this2.myTextInput = _ref;
-	            },
-	            onChange: this.handleChange,
-	            disabled: this.props.disabled,
-	            accept: this.props.accept,
-	            className: btnClasses
-	         });
-	      }
-	   }]);
-	
-	   return UploadButton;
-	}(_react2.default.Component);
-	
-	exports.default = UploadButton;
-	var _React$PropTypes = _react2.default.PropTypes;
-	var string = _React$PropTypes.string;
-	var func = _React$PropTypes.func;
-	/**
-	 * Type Checks
-	 * @type {Object}
-	 */
-	
-	UploadButton.propTypes = {
-	   accept: string.isRequired,
-	   color: string,
-	   label: string,
-	   onChange: func
-	};
-	
-	/**
-	 * Defaults
-	 * @type {Object}
-	 */
-	UploadButton.defaultProps = {};
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-	
-	Object.defineProperty(exports, "__esModule", {
-	   value: true
-	});
-	
-	var _createClass = function () {
-	   function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	         var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	   }return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	   };
-	}();
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(3);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _button = __webpack_require__(1);
-	
-	var _button2 = _interopRequireDefault(_button);
-	
-	var _attrAccept = __webpack_require__(4);
-	
-	var _attrAccept2 = _interopRequireDefault(_attrAccept);
-	
-	var _UploadButton = __webpack_require__(6);
-	
-	var _UploadButton2 = _interopRequireDefault(_UploadButton);
-	
-	var _ImagePreview = __webpack_require__(5);
-	
-	var _ImagePreview2 = _interopRequireDefault(_ImagePreview);
-	
-	function _interopRequireDefault(obj) {
-	   return obj && obj.__esModule ? obj : { default: obj };
-	}
-	
-	function _classCallCheck(instance, Constructor) {
-	   if (!(instance instanceof Constructor)) {
-	      throw new TypeError("Cannot call a class as a function");
-	   }
-	}
-	
-	function _possibleConstructorReturn(self, call) {
-	   if (!self) {
-	      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	   }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	}
-	
-	function _inherits(subClass, superClass) {
-	   if (typeof superClass !== "function" && superClass !== null) {
-	      throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
-	
-	var UploadContainer = function (_React$Component) {
-	   _inherits(UploadContainer, _React$Component);
-	
-	   /**
-	      * Base Container
-	      * @param  {Object} props
-	   */
-	   function UploadContainer(props) {
-	      _classCallCheck(this, UploadContainer);
-	
-	      var _this = _possibleConstructorReturn(this, (UploadContainer.__proto__ || Object.getPrototypeOf(UploadContainer)).call(this, props));
-	
-	      _this.state = {
-	         imageFile: '',
-	         isDragActive: false
-	      };
-	      _this.handleChange = _this.handleChange.bind(_this);
-	      _this.onDragOver = _this.onDragOver.bind(_this);
-	      _this.onDrop = _this.onDrop.bind(_this);
-	      _this.onDragLeave = _this.onDragLeave.bind(_this);
-	      _this.onDragEnter = _this.onDragEnter.bind(_this);
-	      // this.onDragStart = this.onDragStart.bind(this);
-	      // this.onClick = this.onClick.bind(this);
-	      return _this;
-	   }
-	
-	   _createClass(UploadContainer, [{
-	      key: 'componentDidMount',
-	      value: function componentDidMount() {
-	         this.enterCounter = 0;
-	      }
-	   }, {
-	      key: 'onDragEnter',
-	      value: function onDragEnter(e) {
-	         e.preventDefault();
-	
-	         // Count the dropzone and any children that are entered.
-	         ++this.enterCounter;
-	
-	         // This is tricky. During the drag even the dataTransfer.files is null
-	         // But Chrome implements some drag store, which is accesible via dataTransfer.items
-	         var dataTransferItems = e.dataTransfer && e.dataTransfer.items ? e.dataTransfer.items : [];
-	
-	         // Now we need to convert the DataTransferList to Array
-	         var allFilesAccepted = this.fileAccepted(Array.prototype.slice.call(dataTransferItems));
-	
-	         this.setState({
-	            isDragActive: allFilesAccepted,
-	            isDragReject: !allFilesAccepted
-	         });
-	
-	         if (this.props.onDragEnter) {
-	            this.props.onDragEnter.call(this, e);
-	         }
-	      }
-	
-	      /**
-	         * Handle the drag over event
-	         * @param  {Event]} event
-	      */
-	
-	   }, {
-	      key: 'onDragOver',
-	      value: function onDragOver(e) {
-	         e.preventDefault();
-	         e.stopPropagation();
-	         e.dataTransfer.dropEffect = 'copy';
-	
-	         // this.setState({
-	         //    isDragActive: true
-	         // });
-	
-	         return false;
-	         // let $this = $(this.myTextInput),
-	         //    label = 'please drag ';
-	         // console.log($this);
-	         // $this.attr('data-content', label);
-	      }
-	
-	      /**
-	         * Handle the drag leave event
-	      */
-	
-	   }, {
-	      key: 'onDragLeave',
-	      value: function onDragLeave(e) {
-	         e.preventDefault();
-	
-	         // Only deactivate once the dropzone and all children was left.
-	         if (--this.enterCounter > 0) {
-	            return;
-	         }
-	
-	         this.setState({
-	            isDragActive: false,
-	            isDragReject: false
-	         });
-	
-	         if (this.props.onDragLeave) {
-	            this.props.onDragLeave.call(this, e);
-	         }
-	      }
-	
-	      /**
-	         * Handle the drop event
-	         * @param  {Event]} event
-	      */
-	
-	   }, {
-	      key: 'onDrop',
-	      value: function onDrop(e) {
-	         e.preventDefault();
-	         this.setState({
-	            isDragActive: false
-	         });
-	
-	         this.handleChange.call(this, e);
-	      }
-	
-	      /**
-	         * Handle the click event on drop container
-	      */
-	      // onClick () {
-	      //  this.refs.fileInput.myTextInput.click()
-	      // }
-	
-	      /**
-	         * Handle the image state
-	         * If image is available, will create a URL obj
-	         * And modify the state value
-	         * @param  {Event]} event
-	      */
-	
-	   }, {
-	      key: 'handleChange',
-	      value: function handleChange(event) {
-	         var e = event.nativeEvent,
-	             imageFile = void 0;
-	
-	         if (e.dataTransfer) {
-	            var evt = e.dataTransfer.files[0];
-	
-	            if (evt !== undefined) {
-	               imageFile = URL.createObjectURL(evt);
-	               console.log('**DRAGGED** SELECTED FILE', evt);
-	               this.setState({
-	                  imageFile: imageFile
-	               });
-	            } else {
-	               console.warn('Warning: no image selected');
-	            }
-	         } else {
-	            var _evt = event.target.files[0];
-	
-	            // Image src to pass it to ImagePreview Component
-	            if (_evt !== undefined) {
-	               imageFile = URL.createObjectURL(event.target.files[0]);
-	               console.log('SELECTED FILE', event.target.files[0]);
-	               this.setState({
-	                  imageFile: imageFile
-	               });
-	            } else {
-	               console.warn('Warning: no image selected');
-	            }
-	         }
-	      }
-	   }, {
-	      key: 'fileAccepted',
-	      value: function fileAccepted(file) {
-	         var _this2 = this;
-	
-	         console.log(file);
-	         return file.every(function (f) {
-	            return (0, _attrAccept2.default)(f, _this2.props.accept);
-	         });
-	      }
-	
-	      /**
-	         * Handle the button footer color
-	         * @param  {string} color
-	         * @return {string}
-	      */
-	
-	   }, {
-	      key: 'setColor',
-	      value: function setColor() {
-	         var val = arguments.length <= 0 || arguments[0] === undefined ? 'blue' : arguments[0];
-	
-	         var color = val.toLowerCase();
-	
-	         if (val === 'green') {
-	            color = 'green';
-	         } else if (val === 'gray') {
-	            color = 'gray';
-	         } else if (val === 'white') {
-	            color = 'white';
-	         }
-	         return color;
-	      }
-	
-	      /**
-	         * Handle the button label text
-	         * @param  {string} label
-	         * @return {string}
-	      */
-	
-	   }, {
-	      key: 'setText',
-	      value: function setText() {
-	         var label = arguments.length <= 0 || arguments[0] === undefined ? 'Upload' : arguments[0];
-	
-	         return label;
-	      }
-	   }, {
-	      key: 'render',
-	      value: function render() {
-	         var _this3 = this;
-	
-	         // define styles
-	         var color = this.props.buttonColor,
-	             text = this.props.buttonText,
-	             borderStyle = this.state.isDragActive ? 'dragBorder' : '',
-	             visibility = this.state.isDragActive ? 'hide' : 'show',
-	             outerClasses = (0, _classnames2.default)(_button2.default.groupWrapper, _button2.default[borderStyle]),
-	             innerClasses = (0, _classnames2.default)(_button2.default[visibility]);
-	
-	         return _react2.default.createElement('section', { className: (0, _classnames2.default)(_button2.default.wrapper) }, _react2.default.createElement('section', {
-	            ref: function ref(_ref) {
-	               return _this3.myTextInput = _ref;
-	            },
-	            className: outerClasses,
-	            onDragOver: this.onDragOver,
-	            onDragLeave: this.onDragLeave,
-	            onDragStart: this.onDragStart,
-	            onDragEnter: this.onDragEnter,
-	            onDrop: this.onDrop }, _react2.default.createElement('section', { className: (0, _classnames2.default)(innerClasses, _button2.default.groupWrapper) }, _react2.default.createElement(_ImagePreview2.default, { imgSrc: this.state.imageFile }), _react2.default.createElement('form', { className: (0, _classnames2.default)(_button2.default.flexContainer) }, _react2.default.createElement(_UploadButton2.default, {
-	            ref: 'fileInput',
-	            accept: '.png, .gif, .jpg, .jpeg',
-	            onChange: this.handleChange.bind(this),
-	            color: this.setColor(color),
-	            label: this.setText(text)
-	         })))));
-	      }
-	   }]);
-	
-	   return UploadContainer;
-	}(_react2.default.Component);
-	
-	exports.default = UploadContainer;
-	var string = _react2.default.PropTypes.string;
-	
-	/**
-	 * Type Checks
-	 * @type {Object}
-	 */
-	
-	UploadContainer.propTypes = {
-	   buttonColor: string,
-	   buttonText: string
-	};
-
-/***/ },
-/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -10779,6 +10177,754 @@ return /******/ (function(modules) { // webpackBootstrap
 	return jQuery;
 	} );
 
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	module.exports=function(t){function n(e){if(r[e])return r[e].exports;var o=r[e]={exports:{},id:e,loaded:!1};return t[e].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var r={};return n.m=t,n.c=r,n.p="",n(0)}([function(t,n,r){"use strict";n.__esModule=!0,r(8),r(9),n["default"]=function(t,n){if(t&&n){var r=function(){var r=n.split(","),e=t.name||"",o=t.type||"",i=o.replace(/\/.*$/,"");return{v:r.some(function(t){var n=t.trim();return"."===n.charAt(0)?e.toLowerCase().endsWith(n.toLowerCase()):/\/\*$/.test(n)?i===n.replace(/\/.*$/,""):o===n})}}();if("object"==typeof r)return r.v}return!0},t.exports=n["default"]},function(t,n){var r=t.exports={version:"1.2.2"};"number"==typeof __e&&(__e=r)},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n,r){var e=r(2),o=r(1),i=r(4),u=r(19),c="prototype",f=function(t,n){return function(){return t.apply(n,arguments)}},s=function(t,n,r){var a,p,l,d,y=t&s.G,h=t&s.P,v=y?e:t&s.S?e[n]||(e[n]={}):(e[n]||{})[c],x=y?o:o[n]||(o[n]={});y&&(r=n);for(a in r)p=!(t&s.F)&&v&&a in v,l=(p?v:r)[a],d=t&s.B&&p?f(l,e):h&&"function"==typeof l?f(Function.call,l):l,v&&!p&&u(v,a,l),x[a]!=l&&i(x,a,d),h&&((x[c]||(x[c]={}))[a]=l)};e.core=o,s.F=1,s.G=2,s.S=4,s.P=8,s.B=16,s.W=32,t.exports=s},function(t,n,r){var e=r(5),o=r(18);t.exports=r(22)?function(t,n,r){return e.setDesc(t,n,o(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n){var r=Object;t.exports={create:r.create,getProto:r.getPrototypeOf,isEnum:{}.propertyIsEnumerable,getDesc:r.getOwnPropertyDescriptor,setDesc:r.defineProperty,setDescs:r.defineProperties,getKeys:r.keys,getNames:r.getOwnPropertyNames,getSymbols:r.getOwnPropertySymbols,each:[].forEach}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(20)("wks"),o=r(2).Symbol;t.exports=function(t){return e[t]||(e[t]=o&&o[t]||(o||r(6))("Symbol."+t))}},function(t,n,r){r(26),t.exports=r(1).Array.some},function(t,n,r){r(25),t.exports=r(1).String.endsWith},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n,r){var e=r(10);t.exports=function(t,n,r){if(e(t),void 0===n)return t;switch(r){case 1:return function(r){return t.call(n,r)};case 2:return function(r,e){return t.call(n,r,e)};case 3:return function(r,e,o){return t.call(n,r,e,o)}}return function(){return t.apply(n,arguments)}}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,r){t.exports=function(t){var n=/./;try{"/./"[t](n)}catch(e){try{return n[r(7)("match")]=!1,!"/./"[t](n)}catch(o){}}return!0}},function(t,n){t.exports=function(t){try{return!!t()}catch(n){return!0}}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n,r){var e=r(16),o=r(11),i=r(7)("match");t.exports=function(t){var n;return e(t)&&(void 0!==(n=t[i])?!!n:"RegExp"==o(t))}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,r){var e=r(2),o=r(4),i=r(6)("src"),u="toString",c=Function[u],f=(""+c).split(u);r(1).inspectSource=function(t){return c.call(t)},(t.exports=function(t,n,r,u){"function"==typeof r&&(o(r,i,t[n]?""+t[n]:f.join(String(n))),"name"in r||(r.name=n)),t===e?t[n]=r:(u||delete t[n],o(t,n,r))})(Function.prototype,u,function(){return"function"==typeof this&&this[i]||c.call(this)})},function(t,n,r){var e=r(2),o="__core-js_shared__",i=e[o]||(e[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n,r){var e=r(17),o=r(13);t.exports=function(t,n,r){if(e(n))throw TypeError("String#"+r+" doesn't accept regex!");return String(o(t))}},function(t,n,r){t.exports=!r(15)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?e:r)(t)}},function(t,n,r){var e=r(23),o=Math.min;t.exports=function(t){return t>0?o(e(t),9007199254740991):0}},function(t,n,r){"use strict";var e=r(3),o=r(24),i=r(21),u="endsWith",c=""[u];e(e.P+e.F*r(14)(u),"String",{endsWith:function(t){var n=i(this,t,u),r=arguments,e=r.length>1?r[1]:void 0,f=o(n.length),s=void 0===e?f:Math.min(o(e),f),a=String(t);return c?c.call(n,a,s):n.slice(s-a.length,s)===a}})},function(t,n,r){var e=r(5),o=r(3),i=r(1).Array||Array,u={},c=function(t,n){e.each.call(t.split(","),function(t){void 0==n&&t in i?u[t]=i[t]:t in[]&&(u[t]=r(12)(Function.call,[][t],n))})};c("pop,reverse,shift,keys,values,entries",1),c("indexOf,every,some,forEach,map,filter,find,findIndex,includes",3),c("join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill"),o(o.S,"Array",u)}]);
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	/*eslint consistent-this: [2, "that"]*/
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+	
+	var _createClass = function () {
+	   function defineProperties(target, props) {
+	      for (var i = 0; i < props.length; i++) {
+	         var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      }
+	   }return function (Constructor, protoProps, staticProps) {
+	      if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	   };
+	}();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(3);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _attrAccept = __webpack_require__(5);
+	
+	var _attrAccept2 = _interopRequireDefault(_attrAccept);
+	
+	var _jquery = __webpack_require__(4);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	var _button = __webpack_require__(1);
+	
+	var _button2 = _interopRequireDefault(_button);
+	
+	var _UploadButton = __webpack_require__(8);
+	
+	var _UploadButton2 = _interopRequireDefault(_UploadButton);
+	
+	var _ImagePreview = __webpack_require__(7);
+	
+	var _ImagePreview2 = _interopRequireDefault(_ImagePreview);
+	
+	function _interopRequireDefault(obj) {
+	   return obj && obj.__esModule ? obj : { default: obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	   if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	   }
+	}
+	
+	function _possibleConstructorReturn(self, call) {
+	   if (!self) {
+	      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	   }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+	
+	function _inherits(subClass, superClass) {
+	   if (typeof superClass !== "function" && superClass !== null) {
+	      throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var DropContainer = function (_React$Component) {
+	   _inherits(DropContainer, _React$Component);
+	
+	   /**
+	      * Base Container
+	      * @param  {Object} props
+	   */
+	   function DropContainer(props) {
+	      _classCallCheck(this, DropContainer);
+	
+	      var _this = _possibleConstructorReturn(this, (DropContainer.__proto__ || Object.getPrototypeOf(DropContainer)).call(this, props));
+	
+	      _this.state = {
+	         imageFile: '',
+	         isDragActive: false,
+	         borderStyle: '',
+	         visibility: 'show'
+	      };
+	      _this.handleChange = _this.handleChange.bind(_this);
+	      _this.onDragOver = _this.onDragOver.bind(_this);
+	      _this.onDrop = _this.onDrop.bind(_this);
+	      _this.onDragLeave = _this.onDragLeave.bind(_this);
+	      _this.onDragEnter = _this.onDragEnter.bind(_this);
+	      _this.mouseHover = _this.mouseHover.bind(_this);
+	      // this.onDragStart = this.onDragStart.bind(this);
+	      // this.onClick = this.onClick.bind(this);
+	      return _this;
+	   }
+	
+	   _createClass(DropContainer, [{
+	      key: 'componentDidMount',
+	      value: function componentDidMount() {
+	         this.enterCounter = 0;
+	      }
+	   }, {
+	      key: 'onDragEnter',
+	      value: function onDragEnter(e) {
+	         e.preventDefault();
+	
+	         // Count the dropzone and any children that are entered.
+	         ++this.enterCounter;
+	
+	         // This is tricky. During the drag even the dataTransfer.files is null
+	         // But Chrome implements some drag store, which is accesible via dataTransfer.items
+	         var dataTransferItems = this.extractData(e);
+	
+	         // Now we need to convert the DataTransferList to Array
+	         var allFilesAccepted = this.fileAccepted(Array.prototype.slice.call(dataTransferItems));
+	
+	         this.setState({
+	            isDragActive: allFilesAccepted,
+	            borderStyle: 'dragBorder',
+	            visibility: 'hide'
+	            // isDragReject: !allFilesAccepted
+	         });
+	
+	         if (allFilesAccepted) {
+	            this.successBorder();
+	         } else {
+	            this.warningBorder();
+	         }
+	      }
+	
+	      /**
+	         * Handle the drag over event
+	         * @param  {Event]} event
+	      */
+	
+	   }, {
+	      key: 'onDragOver',
+	      value: function onDragOver(e) {
+	         e.preventDefault();
+	         e.stopPropagation();
+	         e.dataTransfer.dropEffect = 'copy';
+	
+	         return false;
+	      }
+	
+	      /**
+	         * Handle the drag leave event
+	      */
+	
+	   }, {
+	      key: 'onDragLeave',
+	      value: function onDragLeave(e) {
+	         e.preventDefault();
+	
+	         // Only deactivate once the dropzone and all children was left.
+	         if (--this.enterCounter > 0) {
+	            return;
+	         }
+	
+	         this.setState({
+	            isDragActive: false,
+	            isDragReject: false,
+	            borderStyle: '',
+	            visibility: 'show'
+	         });
+	
+	         // if (this.props.onDragLeave) {
+	         //    this.props.onDragLeave.call(this, e);
+	         // }
+	      }
+	
+	      /**
+	         * Handle the drop event
+	         * @param  {Event]} event
+	      */
+	
+	   }, {
+	      key: 'onDrop',
+	      value: function onDrop(e) {
+	         e.preventDefault();
+	         this.setState({
+	            isDragActive: false,
+	            borderStyle: '',
+	            visibility: 'show'
+	         });
+	         this.handleChange.call(this, e);
+	      }
+	
+	      /**
+	         * Handle the click event on drop container
+	      */
+	      // onClick () {
+	      //    console.log('on click called');
+	      //    this.refs.fileInput.myTextInput.click();
+	      // }
+	
+	   }, {
+	      key: 'mouseHover',
+	      value: function mouseHover() {
+	         var that = this;
+	         (0, _jquery2.default)('img').on('mouseEnter', function (e) {
+	            e.preventDefault();
+	            console.log('hello');
+	
+	            that.setState({
+	               imageFile: 'https://lh3.googleusercontent.com/G2jzG8a6-GAA4yhxx3XMJfPXsm6_pluyeEWKr9I5swUGF62d2xo_Qg3Kdnu00HAmDQ=w300'
+	            });
+	         });
+	      }
+	      /**
+	         * Handle the image state
+	         * If image is available, will create a URL obj
+	         * And modify the state value
+	         * @param  {Event]} event
+	      */
+	
+	   }, {
+	      key: 'handleChange',
+	      value: function handleChange(event) {
+	         var e = event.nativeEvent,
+	             imageFile = void 0;
+	
+	         var dataTransferItems = this.extractData(event);
+	         var allFilesAccepted = this.fileAccepted(Array.prototype.slice.call(dataTransferItems));
+	
+	         // Check to make sure the dropped file
+	         // is in image format - image/*
+	         if (allFilesAccepted) {
+	            // Setting the state image source
+	            // With drag & drop event
+	            if (e.dataTransfer) {
+	               var evt = e.dataTransfer.files[0];
+	
+	               if (evt !== undefined) {
+	                  imageFile = URL.createObjectURL(evt);
+	                  console.log('**DRAGGED** SELECTED FILE', evt);
+	                  this.setState({
+	                     imageFile: imageFile
+	                  });
+	               } else {
+	                  console.warn('Warning: no image selected');
+	               }
+	
+	               // Setting the state image source
+	               // With click button event
+	            } else {
+	               var _evt = event.target.files[0];
+	
+	               // Image src to pass it to ImagePreview Component
+	               if (_evt !== undefined) {
+	                  imageFile = URL.createObjectURL(event.target.files[0]);
+	                  console.log('SELECTED FILE', event.target.files[0]);
+	
+	                  this.setState({
+	                     imageFile: imageFile
+	                  });
+	               } else {
+	                  console.warn('Warning: no image selected');
+	               }
+	            }
+	         }
+	      }
+	   }, {
+	      key: 'fileAccepted',
+	      value: function fileAccepted(file) {
+	         return file.every(function (f) {
+	            return (0, _attrAccept2.default)(f, 'image/*');
+	         });
+	      }
+	   }, {
+	      key: 'extractData',
+	      value: function extractData(e) {
+	         return e.dataTransfer && e.dataTransfer.items ? e.dataTransfer.items : [];
+	      }
+	      /**
+	         * Handle the button footer color
+	         * @param  {string} color
+	         * @return {string}
+	      */
+	
+	   }, {
+	      key: 'setColor',
+	      value: function setColor() {
+	         var val = arguments.length <= 0 || arguments[0] === undefined ? 'blue' : arguments[0];
+	
+	         var color = val.toLowerCase();
+	
+	         if (val === 'green') {
+	            color = 'green';
+	         } else if (val === 'gray') {
+	            color = 'gray';
+	         } else if (val === 'white') {
+	            color = 'white';
+	         }
+	         return color;
+	      }
+	
+	      /**
+	         * Handle the button label text
+	         * @param  {string} label
+	         * @return {string}
+	      */
+	
+	   }, {
+	      key: 'setText',
+	      value: function setText() {
+	         var label = arguments.length <= 0 || arguments[0] === undefined ? 'Upload' : arguments[0];
+	
+	         return label;
+	      }
+	   }, {
+	      key: 'successBorder',
+	      value: function successBorder() {
+	         this.setState({
+	            borderStyle: 'successBorder'
+	         });
+	      }
+	   }, {
+	      key: 'warningBorder',
+	      value: function warningBorder() {
+	         this.setState({
+	            borderStyle: 'warningBorder'
+	         });
+	      }
+	   }, {
+	      key: 'render',
+	      value: function render() {
+	         var _this2 = this;
+	
+	         // define styles
+	         var color = this.props.buttonColor,
+	             text = this.props.buttonText,
+	             borderStyle = this.state.borderStyle,
+	             visibility = this.state.visibility,
+	             outerClasses = (0, _classnames2.default)(_button2.default.groupWrapper, _button2.default[borderStyle]),
+	             innerClasses = (0, _classnames2.default)(_button2.default[visibility]);
+	
+	         return _react2.default.createElement('section', {
+	            ref: function ref(_ref) {
+	               return _this2.myTextInput = _ref;
+	            },
+	            className: outerClasses,
+	            onDragOver: this.onDragOver,
+	            onDragLeave: this.onDragLeave,
+	            onDragStart: this.onDragStart,
+	            onDragEnter: this.onDragEnter,
+	            onClick: this.onClick,
+	            onDrop: this.onDrop }, _react2.default.createElement('section', { className: (0, _classnames2.default)(innerClasses, _button2.default.groupWrapper) }, _react2.default.createElement(_ImagePreview2.default, {
+	            imgSrc: this.state.imageFile,
+	            mouseHover: this.mouseHover,
+	            mouseLeave: this.mouseLeave
+	         }), _react2.default.createElement('form', { className: (0, _classnames2.default)(_button2.default.flexContainer) }, _react2.default.createElement(_UploadButton2.default, {
+	            ref: 'fileInput',
+	            accept: '.png, .gif, .jpg, .jpeg',
+	            onChange: this.handleChange.bind(this),
+	            color: this.setColor(color),
+	            label: this.setText(text)
+	         }))));
+	      }
+	   }]);
+	
+	   return DropContainer;
+	}(_react2.default.Component);
+	
+	/**
+	 * Type Checks
+	 * @type {Object}
+	 */
+	
+	exports.default = DropContainer;
+	var string = _react2.default.PropTypes.string;
+	
+	DropContainer.propTypes = {
+	   buttonColor: string,
+	   buttonText: string
+	};
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+	
+	var _createClass = function () {
+	   function defineProperties(target, props) {
+	      for (var i = 0; i < props.length; i++) {
+	         var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      }
+	   }return function (Constructor, protoProps, staticProps) {
+	      if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	   };
+	}();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(3);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _button = __webpack_require__(1);
+	
+	var _button2 = _interopRequireDefault(_button);
+	
+	function _interopRequireDefault(obj) {
+	   return obj && obj.__esModule ? obj : { default: obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	   if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	   }
+	}
+	
+	function _possibleConstructorReturn(self, call) {
+	   if (!self) {
+	      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	   }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+	
+	function _inherits(subClass, superClass) {
+	   if (typeof superClass !== "function" && superClass !== null) {
+	      throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var ImagePreview = function (_React$Component) {
+	   _inherits(ImagePreview, _React$Component);
+	
+	   function ImagePreview() {
+	      _classCallCheck(this, ImagePreview);
+	
+	      return _possibleConstructorReturn(this, (ImagePreview.__proto__ || Object.getPrototypeOf(ImagePreview)).apply(this, arguments));
+	   }
+	
+	   _createClass(ImagePreview, [{
+	      key: 'toggleImage',
+	
+	      /**
+	         * Find out if image src is available
+	         * If not hide the image area otherwise show the image
+	         * @return {String}
+	      */
+	      value: function toggleImage() {
+	         var image = this.props.imgSrc,
+	             imgShow = (0, _classnames2.default)(_button2.default.img, _button2.default.show),
+	             imgHide = (0, _classnames2.default)(_button2.default.img, _button2.default.hide);
+	         return image === '' ? imgHide : imgShow;
+	      }
+	   }, {
+	      key: 'render',
+	      value: function render() {
+	         console.log(this.props);
+	         return _react2.default.createElement('img', {
+	            src: this.props.imgSrc,
+	            className: this.toggleImage()
+	         });
+	      }
+	   }]);
+	
+	   return ImagePreview;
+	}(_react2.default.Component);
+	
+	/**
+	 * Type Checks
+	 * @type {Object}
+	 */
+	
+	exports.default = ImagePreview;
+	var string = _react2.default.PropTypes.string;
+	
+	ImagePreview.propTypes = {
+	   imgSrc: string
+	};
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+	
+	var _createClass = function () {
+	   function defineProperties(target, props) {
+	      for (var i = 0; i < props.length; i++) {
+	         var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      }
+	   }return function (Constructor, protoProps, staticProps) {
+	      if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	   };
+	}();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(3);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _jquery = __webpack_require__(4);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	var _button = __webpack_require__(1);
+	
+	var _button2 = _interopRequireDefault(_button);
+	
+	function _interopRequireDefault(obj) {
+	   return obj && obj.__esModule ? obj : { default: obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	   if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	   }
+	}
+	
+	function _possibleConstructorReturn(self, call) {
+	   if (!self) {
+	      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	   }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+	
+	function _inherits(subClass, superClass) {
+	   if (typeof superClass !== "function" && superClass !== null) {
+	      throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var UploadButton = function (_React$Component) {
+	   _inherits(UploadButton, _React$Component);
+	
+	   /**
+	      * Base Button
+	      * @param  {Object} props
+	   */
+	   function UploadButton(props) {
+	      _classCallCheck(this, UploadButton);
+	
+	      var _this = _possibleConstructorReturn(this, (UploadButton.__proto__ || Object.getPrototypeOf(UploadButton)).call(this, props));
+	
+	      _this.state = {
+	         buttonLabel: ''
+	      };
+	      _this.handleChange = _this.handleChange.bind(_this);
+	      return _this;
+	   }
+	
+	   /**
+	      * Handle the button text label after component rendered
+	   */
+	
+	   _createClass(UploadButton, [{
+	      key: 'componentDidMount',
+	      value: function componentDidMount() {
+	         var $this = (0, _jquery2.default)(this.myTextInput),
+	             label = this.props.label;
+	         $this.attr('data-content', label);
+	      }
+	
+	      /**
+	         * Handle the button state
+	         * @param  {Event]} event
+	      */
+	
+	   }, {
+	      key: 'handleChange',
+	      value: function handleChange(e) {
+	         this.setState({
+	            buttonLabel: e.target.value.split(/(\\|\/)/g).pop()
+	         });
+	         if (this.props.onChange) {
+	            this.props.onChange(e);
+	         }
+	      }
+	   }, {
+	      key: 'render',
+	      value: function render() {
+	         var _this2 = this;
+	
+	         // let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
+	         var color = this.props.color;
+	
+	         var btnClasses = (0, _classnames2.default)(_button2.default.btn, _button2.default.raised, _button2.default.flexItem, _button2.default.input, _button2.default[color]);
+	         // Construct props
+	         // let props = {
+	         //    disabled: this.props.disabled,
+	         //    ref:'container',
+	         //    className: btnClasses,
+	         //    color: this.props.color,
+	         //    onMouseEnter: this.handleMouseEnter,
+	         //    onMouseLeave: this.handleMouseLeave,
+	         //    onClick: this.handleClick
+	         // }
+	
+	         return _react2.default.createElement('input', { type: 'file',
+	            ref: function ref(_ref) {
+	               return _this2.myTextInput = _ref;
+	            },
+	            onChange: this.handleChange,
+	            disabled: this.props.disabled,
+	            accept: this.props.accept,
+	            className: btnClasses
+	         });
+	      }
+	   }]);
+	
+	   return UploadButton;
+	}(_react2.default.Component);
+	
+	/**
+	 * Type Checks
+	 * @type {Object}
+	 */
+	
+	exports.default = UploadButton;
+	var _React$PropTypes = _react2.default.PropTypes;
+	var string = _React$PropTypes.string;
+	var func = _React$PropTypes.func;
+	
+	UploadButton.propTypes = {
+	   accept: string.isRequired,
+	   color: string,
+	   label: string,
+	   onChange: func
+	};
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+	
+	var _createClass = function () {
+	   function defineProperties(target, props) {
+	      for (var i = 0; i < props.length; i++) {
+	         var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      }
+	   }return function (Constructor, protoProps, staticProps) {
+	      if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	   };
+	}();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(3);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _button = __webpack_require__(1);
+	
+	var _button2 = _interopRequireDefault(_button);
+	
+	var _DropContainer = __webpack_require__(6);
+	
+	var _DropContainer2 = _interopRequireDefault(_DropContainer);
+	
+	function _interopRequireDefault(obj) {
+	   return obj && obj.__esModule ? obj : { default: obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	   if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	   }
+	}
+	
+	function _possibleConstructorReturn(self, call) {
+	   if (!self) {
+	      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	   }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+	
+	function _inherits(subClass, superClass) {
+	   if (typeof superClass !== "function" && superClass !== null) {
+	      throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var UploadContainer = function (_React$Component) {
+	   _inherits(UploadContainer, _React$Component);
+	
+	   function UploadContainer() {
+	      _classCallCheck(this, UploadContainer);
+	
+	      return _possibleConstructorReturn(this, (UploadContainer.__proto__ || Object.getPrototypeOf(UploadContainer)).apply(this, arguments));
+	   }
+	
+	   _createClass(UploadContainer, [{
+	      key: 'render',
+	      value: function render() {
+	         return _react2.default.createElement('section', { className: (0, _classnames2.default)(_button2.default.wrapper) }, _react2.default.createElement(_DropContainer2.default, {
+	            buttonColor: this.props.buttonColor,
+	            buttonText: this.props.buttonText
+	         }));
+	      }
+	   }]);
+	
+	   return UploadContainer;
+	}(_react2.default.Component);
+	
+	/**
+	 * Type Checks
+	 * @type {Object}
+	 */
+	
+	exports.default = UploadContainer;
+	var string = _react2.default.PropTypes.string;
+	
+	UploadContainer.propTypes = {
+	   buttonColor: string,
+	   buttonText: string
+	};
 
 /***/ }
 /******/ ])
