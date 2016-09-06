@@ -123,7 +123,7 @@ buttonColor='green'
 
 ```
 
-- DEFAULT VALUES:
+##### DEFAULT VALUES:
 - [x] background color: transparent
 - [x] button color: blue
 - [x] button text: Upload
