@@ -76,7 +76,7 @@ $ npm start
 which will live reload any changes you make and serve them at http://localhost:8080.
 
 ### Component customization
-- Bachground Color: You can customize upload container backround color using RGB, HEX or regular colors.
+- **Bachground Color:** You can customize upload container backround color using RGB, HEX or regular colors.
 
 ```javascript
 
@@ -92,7 +92,7 @@ backgroundColor='DarkTurquoise'
 
 ```
 
-- Button Color: You can customize button text label.
+- **Button Color:** You can customize button text label.
 
 ```javascript
 
@@ -107,7 +107,7 @@ buttonText='Upload'
 />
 ```
 
-- Button Text: You can choose materials color for the button.
+- **Button Text:** You can choose materials color for the button.
 
 ```javascript
 
@@ -123,7 +123,7 @@ buttonColor='green'
 
 ```
 
-##### DEFAULT VALUES:
+#### DEFAULT VALUES:
 - [x] background color: transparent
 - [x] button color: blue
 - [x] button text: Upload
