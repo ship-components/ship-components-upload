@@ -1,5 +1,7 @@
 # ship-components-dropzone
-Upload button / Drag & Drop component
+Simple HTML5 drag-drop zone for images with validation using React.js.
+
+Try it out here: https://github.com/ship-components/ship-components-dropzone
 
 # ship-components-dropzone
 [React](http://facebook.github.io/react/) Upload component (Drag & Drop). Exports a commonjs module that can be used with [webpack](http://webpack.github.io/). Source is in ES6 and is compiled down to ES5 using [Babel](https://babeljs.io/).
@@ -13,37 +15,52 @@ Upload button / Drag & Drop component
 
 ### ES6/JSX (Recommended)
 The component is written using ES6/JSX therefore Babel is recommended to use it. The below example is based on using [webpack](http://webpack.github.io/) and [babel-loader](https://github.com/babel/babel-loader).
-```js
+```javascript
+
 import React from 'react';
-import { dropzone } from 'ship-components-dropzone';
+import ReactDOM from 'react-dom';
+import { UploadContainer } from 'ship-components-dropzone';
 
-export default class Dialog extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clicked: false
-    };
-  }
-
-  handleClick(event) {
-    this.setState({
-      clicked: true
-    });
-  }
-
+class UploadButtonExamples extends React.Component {
   render() {
-    <div>
-      <h1>Upload Button Examples</h1>
-      <div className='example-group'>
-        <h2>Material Blue Button</h2>
-        <UploadContainer
-           buttonText='Upload'
-           backgroundColor='#d23f31'
-        />
+    return (
+      <div>
+        <h1>Upload Button Examples</h1>
+        <div className='example-group'>
+          <h2>Blue Button</h2>
+          <UploadContainer
+             buttonText='Upload'
+          />
+        </div>
+        <div className='example-group'>
+          <h2>Green Button</h2>
+          <UploadContainer
+             buttonColor='green'
+             buttonText='Submit'
+             backgroundColor='#4285f4'
+          />
+        </div>
+        <div className='example-group'>
+          <h2>Grey Button</h2>
+          <UploadContainer
+             buttonColor='gray'
+             buttonText='Done'
+             backgroundColor='#0f9d58'
+          />
+        </div>
+        <div className='example-group'>
+          <h2>White Button</h2>
+          <UploadContainer
+             buttonColor='white'
+             buttonText='Press'
+             backgroundColor='#d23f31'
+          />
+        </div>
       </div>
-    </div>
+    )
   }
 }
+
 ```
 
 ## Examples and Development
@@ -57,6 +74,48 @@ $ npm start
 ```
 
 which will live reload any changes you make and serve them at http://localhost:8080.
+
+### Component customization
+1. You can customize upload container backround color using RGB, HEX or regular colors.
+...```javascript
+<UploadContainer
+backgroundColor='#4285f4'
+/>
+
+// OR
+<UploadContainer
+backgroundColor='DarkTurquoise'
+/>
+```
+
+2. You can customize button text label.
+...```javascript
+<UploadContainer
+buttonText='Submit'
+/>
+
+// OR
+<UploadContainer
+buttonText='Upload'
+/>
+```
+
+3. You can choose materials color for the button.
+...```javascript
+<UploadContainer
+buttonColor='blue'
+/>
+
+// OR
+<UploadContainer
+buttonColor='green'
+/>
+```
+
+4. DEFAULT VALUES:
+..* background color: transparent
+..* button color: blue
+..* button text: Upload
 
 ### Webpack Configuration
 This module is designed to be used with webpack but requires a few loaders if you are pulling the source into another project.
