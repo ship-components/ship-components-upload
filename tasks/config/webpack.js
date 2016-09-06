@@ -49,7 +49,9 @@ module.exports = function(grunt) {
         }),
         new webpack.optimize.OccurenceOrderPlugin(true),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+          compress: { warnings: false }
+        })
       ]
     }
   });
@@ -70,7 +72,7 @@ module.exports = function(grunt) {
       failOnWarning: false
     },
     externals: {
-      'react': 'React',
+      react: 'React',
       'react-dom': 'ReactDOM',
       'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup'
     }

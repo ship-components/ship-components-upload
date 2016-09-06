@@ -84,6 +84,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+	module.exports = {"wrapper":"button--wrapper","groupWrapper":"button--groupWrapper","dragBorder":"button--dragBorder","successBorder":"button--successBorder","warningBorder":"button--warningBorder","flexItem":"button--flexItem","input":"button--input","btn":"button--btn","blue":"button--blue","green":"button--green","gray":"button--gray","white":"button--white","raised":"button--raised","img":"button--img","hide":"button--hide","show":"button--show","some":"button--some"};
 
 /***/ },
 /* 2 */
@@ -10223,9 +10224,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _styles = __webpack_require__(1);
+	var _button = __webpack_require__(1);
 	
-	var _styles2 = _interopRequireDefault(_styles);
+	var _button2 = _interopRequireDefault(_button);
 	
 	var _UploadButton = __webpack_require__(8);
 	
@@ -10275,14 +10276,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	         borderStyle: '',
 	         visibility: 'show'
 	      };
-	
 	      _this.handleChange = _this.handleChange.bind(_this);
 	      _this.onDragOver = _this.onDragOver.bind(_this);
 	      _this.onDrop = _this.onDrop.bind(_this);
 	      _this.onDragLeave = _this.onDragLeave.bind(_this);
 	      _this.onDragEnter = _this.onDragEnter.bind(_this);
 	      _this.onDragStart = _this.onDragStart.bind(_this);
-	      // this.onClick = this.onClick.bind(this);
 	      return _this;
 	   }
 	
@@ -10290,6 +10289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      key: 'componentDidMount',
 	      value: function componentDidMount() {
 	         this.enterCounter = 0;
+	
 	         // Change the background color of
 	         // outer section with the prop color
 	         // passing in
@@ -10297,6 +10297,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	             color = this.props.backgroundColor;
 	         (0, _jquery2.default)($this).css('background-color', color);
 	      }
+	
+	      /**
+	         * Handle the drag start event
+	         * @param  {Event]} event
+	      */
+	
 	   }, {
 	      key: 'onDragStart',
 	      value: function onDragStart(e) {
@@ -10304,6 +10310,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.props.onDragStart.call(this, e);
 	         }
 	      }
+	
+	      /**
+	         * Handle the drag enter event
+	         * @param  {Event]} event
+	      */
+	
 	   }, {
 	      key: 'onDragEnter',
 	      value: function onDragEnter(e) {
@@ -10326,6 +10338,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // isDragReject: !allFilesAccepted
 	         });
 	
+	         //IF file type is accepted
+	         //  SHOW GREEN border
+	         //ELSE
+	         //  RED border
 	         if (allFilesAccepted) {
 	            this.successBorder();
 	         } else {
@@ -10344,7 +10360,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	         e.preventDefault();
 	         e.stopPropagation();
 	         e.dataTransfer.dropEffect = 'copy';
-	
 	         return false;
 	      }
 	
@@ -10374,7 +10389,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	         }
 	
 	         if (this.state.imageFile) {
-	            console.log('onDragLeave');
 	            return;
 	         }
 	      }
@@ -10430,7 +10444,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	               if (evt !== undefined) {
 	                  imageFile = URL.createObjectURL(evt);
-	                  console.log('**DRAGGED** SELECTED FILE', evt);
+	                  // console.log('**DRAGGED** SELECTED FILE', evt);
 	                  this.setState({
 	                     imageFile: imageFile
 	                  });
@@ -10446,7 +10460,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	               // Image src to pass it to ImagePreview Component
 	               if (_evt !== undefined) {
 	                  imageFile = URL.createObjectURL(event.target.files[0]);
-	                  console.log('SELECTED FILE', event.target.files[0]);
+	                  // console.log('SELECTED FILE', event.target.files[0]);
 	
 	                  this.setState({
 	                     imageFile: imageFile
@@ -10457,6 +10471,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	         }
 	      }
+	
+	      /**
+	         * Handle file type validation
+	         * make sure the file is an image
+	         * @param  {Event]} event
+	         * @return {bool}
+	      */
+	
 	   }, {
 	      key: 'fileAccepted',
 	      value: function fileAccepted(file) {
@@ -10464,11 +10486,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return (0, _attrAccept2.default)(f, 'image/*');
 	         });
 	      }
+	
+	      /**
+	         * Handle file type validation
+	         * make sure the file is an image
+	         * @param  {Event]} event
+	         * @return {object}
+	      */
+	
 	   }, {
 	      key: 'extractData',
 	      value: function extractData(e) {
 	         return e.dataTransfer && e.dataTransfer.items ? e.dataTransfer.items : [];
 	      }
+	
 	      /**
 	         * Handle the button footer color
 	         * @param  {string} color
@@ -10505,6 +10536,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	         return label;
 	      }
+	
+	      /**
+	         * Handle border color
+	         * if file type is correct
+	         * make border GREEN
+	      */
+	
 	   }, {
 	      key: 'successBorder',
 	      value: function successBorder() {
@@ -10512,6 +10550,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            borderStyle: 'successBorder'
 	         });
 	      }
+	
+	      /**
+	         * Handle border color
+	         * if file type is incorrect
+	         * make border RED
+	      */
+	
 	   }, {
 	      key: 'warningBorder',
 	      value: function warningBorder() {
@@ -10529,8 +10574,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	             text = this.props.buttonText,
 	             borderStyle = this.state.borderStyle,
 	             visibility = this.state.visibility,
-	             outerClasses = (0, _classnames2.default)(_styles2.default.groupWrapper, _styles2.default[borderStyle]),
-	             innerClasses = (0, _classnames2.default)(_styles2.default[visibility]);
+	             outerClasses = (0, _classnames2.default)(_button2.default.groupWrapper, _button2.default[borderStyle]),
+	             innerClasses = (0, _classnames2.default)(_button2.default[visibility]);
 	         return _react2.default.createElement('section', {
 	            ref: function ref(_ref) {
 	               return _this2.myTextInput = _ref;
@@ -10541,9 +10586,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onDragStart: this.onDragStart,
 	            onDragEnter: this.onDragEnter,
 	            onClick: this.onClick,
-	            onDrop: this.onDrop }, _react2.default.createElement('section', { className: (0, _classnames2.default)(innerClasses, _styles2.default.groupWrapper) }, _react2.default.createElement(_ImagePreview2.default, {
-	            imgSrc: this.state.imageFile
-	         }), _react2.default.createElement('form', { className: (0, _classnames2.default)(_styles2.default.flexContainer) }, _react2.default.createElement(_UploadButton2.default, {
+	            onDrop: this.onDrop }, _react2.default.createElement('section', { className: (0, _classnames2.default)(innerClasses, _button2.default.groupWrapper) }, _react2.default.createElement(_ImagePreview2.default, { imgSrc: this.state.imageFile }), _react2.default.createElement('form', { className: (0, _classnames2.default)(_button2.default.flexContainer) }, _react2.default.createElement(_UploadButton2.default, {
 	            ref: 'fileInput',
 	            accept: '.png, .gif, .jpg, .jpeg',
 	            onChange: this.handleChange.bind(this),
@@ -10566,7 +10609,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	DropContainer.propTypes = {
 	   buttonColor: string,
-	   buttonText: string
+	   buttonText: string,
+	   backgroundColor: string
 	};
 
 /***/ },
@@ -10599,9 +10643,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _styles = __webpack_require__(1);
+	var _button = __webpack_require__(1);
 	
-	var _styles2 = _interopRequireDefault(_styles);
+	var _button2 = _interopRequireDefault(_button);
 	
 	function _interopRequireDefault(obj) {
 	   return obj && obj.__esModule ? obj : { default: obj };
@@ -10628,36 +10672,66 @@ return /******/ (function(modules) { // webpackBootstrap
 	var ImagePreview = function (_React$Component) {
 	   _inherits(ImagePreview, _React$Component);
 	
-	   function ImagePreview() {
+	   /**
+	      * Image Placeholder
+	      * @param  {Object} props
+	   */
+	   function ImagePreview(props) {
 	      _classCallCheck(this, ImagePreview);
 	
-	      return _possibleConstructorReturn(this, (ImagePreview.__proto__ || Object.getPrototypeOf(ImagePreview)).apply(this, arguments));
+	      var _this = _possibleConstructorReturn(this, (ImagePreview.__proto__ || Object.getPrototypeOf(ImagePreview)).call(this, props));
+	
+	      _this.state = {
+	         isDragable: false
+	      };
+	      _this.onMouseDownHandler = _this.onMouseDownHandler.bind(_this);
+	      _this.onMouseHoverHandler = _this.onMouseHoverHandler.bind(_this);
+	      return _this;
 	   }
 	
-	   _createClass(ImagePreview, [{
-	      key: 'toggleImage',
+	   /**
+	      * Handle the mouse down event on image
+	      * Will disable the drag out when image added
+	      * @param  {Event]} event
+	   */
 	
+	   _createClass(ImagePreview, [{
+	      key: 'onMouseDownHandler',
+	      value: function onMouseDownHandler(e) {
+	         if (!this.state.isDragable) {
+	            e.preventDefault();
+	         }
+	      }
+	   }, {
+	      key: 'onMouseHoverHandler',
+	      value: function onMouseHoverHandler(e) {
+	         console.log(e);
+	      }
 	      /**
 	         * Find out if image src is available
 	         * If not hide the image area otherwise show the image
 	         * @return {String}
 	      */
+	
+	   }, {
+	      key: 'toggleImage',
 	      value: function toggleImage() {
 	         var image = this.props.imgSrc,
-	             imgShow = (0, _classnames2.default)(_styles2.default.img, _styles2.default.show),
-	             imgHide = (0, _classnames2.default)(_styles2.default.img, _styles2.default.hide);
+	             imgShow = (0, _classnames2.default)(_button2.default.img, _button2.default.show),
+	             imgHide = (0, _classnames2.default)(_button2.default.img, _button2.default.hide);
 	         return image === '' ? imgHide : imgShow;
 	      }
 	   }, {
 	      key: 'render',
 	      value: function render() {
-	         // console.log(this.props);
 	         return _react2.default.createElement('div', null, _react2.default.createElement('img', {
 	            src: this.props.imgSrc,
-	            className: this.toggleImage()
+	            className: this.toggleImage(),
+	            onMouseDown: this.onMouseDownHandler,
+	            onMouseHover: this.onMouseHoverHandler
 	         }), _react2.default.createElement('img', {
 	            src: '',
-	            className: (0, _classnames2.default)(_styles2.default.deleteImage)
+	            className: (0, _classnames2.default)(_button2.default.deleteImage)
 	         }));
 	      }
 	   }]);
@@ -10711,9 +10785,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _styles = __webpack_require__(1);
+	var _button = __webpack_require__(1);
 	
-	var _styles2 = _interopRequireDefault(_styles);
+	var _button2 = _interopRequireDefault(_button);
 	
 	function _interopRequireDefault(obj) {
 	   return obj && obj.__esModule ? obj : { default: obj };
@@ -10791,7 +10865,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         // let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
 	         var color = this.props.color;
 	
-	         var btnClasses = (0, _classnames2.default)(_styles2.default.btn, _styles2.default.raised, _styles2.default.flexItem, _styles2.default.input, _styles2.default[color]);
+	         var btnClasses = (0, _classnames2.default)(_button2.default.btn, _button2.default.raised, _button2.default.flexItem, _button2.default.input, _button2.default[color]);
 	         // Construct props
 	         // let props = {
 	         //    disabled: this.props.disabled,
@@ -10844,17 +10918,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 	
 	Object.defineProperty(exports, "__esModule", {
-	   value: true
+	  value: true
 	});
 	
 	var _createClass = function () {
-	   function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	         var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	   }return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	   };
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
 	}();
 	
 	var _react = __webpack_require__(2);
@@ -10865,57 +10939,57 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _styles = __webpack_require__(1);
+	var _button = __webpack_require__(1);
 	
-	var _styles2 = _interopRequireDefault(_styles);
+	var _button2 = _interopRequireDefault(_button);
 	
 	var _DropContainer = __webpack_require__(6);
 	
 	var _DropContainer2 = _interopRequireDefault(_DropContainer);
 	
 	function _interopRequireDefault(obj) {
-	   return obj && obj.__esModule ? obj : { default: obj };
+	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 	
 	function _classCallCheck(instance, Constructor) {
-	   if (!(instance instanceof Constructor)) {
-	      throw new TypeError("Cannot call a class as a function");
-	   }
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
 	}
 	
 	function _possibleConstructorReturn(self, call) {
-	   if (!self) {
-	      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	   }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
 	}
 	
 	function _inherits(subClass, superClass) {
-	   if (typeof superClass !== "function" && superClass !== null) {
-	      throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
 	var UploadContainer = function (_React$Component) {
-	   _inherits(UploadContainer, _React$Component);
+	  _inherits(UploadContainer, _React$Component);
 	
-	   function UploadContainer() {
-	      _classCallCheck(this, UploadContainer);
+	  function UploadContainer() {
+	    _classCallCheck(this, UploadContainer);
 	
-	      return _possibleConstructorReturn(this, (UploadContainer.__proto__ || Object.getPrototypeOf(UploadContainer)).apply(this, arguments));
-	   }
+	    return _possibleConstructorReturn(this, (UploadContainer.__proto__ || Object.getPrototypeOf(UploadContainer)).apply(this, arguments));
+	  }
 	
-	   _createClass(UploadContainer, [{
-	      key: 'render',
-	      value: function render() {
-	         return _react2.default.createElement('section', { className: (0, _classnames2.default)(_styles2.default.wrapper) }, _react2.default.createElement(_DropContainer2.default, {
-	            buttonColor: this.props.buttonColor,
-	            buttonText: this.props.buttonText,
-	            backgroundColor: this.props.backgroundColor
-	         }));
-	      }
-	   }]);
+	  _createClass(UploadContainer, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement('section', { className: (0, _classnames2.default)(_button2.default.wrapper) }, _react2.default.createElement(_DropContainer2.default, {
+	        buttonColor: this.props.buttonColor,
+	        buttonText: this.props.buttonText,
+	        backgroundColor: this.props.backgroundColor
+	      }));
+	    }
+	  }]);
 	
-	   return UploadContainer;
+	  return UploadContainer;
 	}(_react2.default.Component);
 	
 	/**
@@ -10927,8 +11001,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var string = _react2.default.PropTypes.string;
 	
 	UploadContainer.propTypes = {
-	   buttonColor: string,
-	   buttonText: string
+	  buttonColor: string,
+	  buttonText: string,
+	  backgroundColor: string
 	};
 
 /***/ }

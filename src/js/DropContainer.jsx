@@ -4,7 +4,6 @@ import React from 'react';
 import classNames from 'classnames';
 import accepts from 'attr-accept';
 import $ from 'jquery';
-
 import css from '../stylesheets/button.css';
 import UploadButton from './UploadButton';
 import ImagePreview from './ImagePreview';
@@ -28,11 +27,11 @@ export default class DropContainer extends React.Component {
       this.onDragLeave = this.onDragLeave.bind(this);
       this.onDragEnter = this.onDragEnter.bind(this);
       this.onDragStart = this.onDragStart.bind(this);
-      // this.onClick = this.onClick.bind(this);
    }
 
    componentDidMount() {
       this.enterCounter = 0;
+
       // Change the background color of
       // outer section with the prop color
       // passing in
@@ -41,12 +40,20 @@ export default class DropContainer extends React.Component {
       $($this).css('background-color', color);
    }
 
+   /**
+      * Handle the drag start event
+      * @param  {Event]} event
+   */
    onDragStart(e) {
       if (this.props.onDragStart) {
          this.props.onDragStart.call(this, e);
       }
    }
 
+   /**
+      * Handle the drag enter event
+      * @param  {Event]} event
+   */
    onDragEnter(e) {
       e.preventDefault();
 
@@ -67,6 +74,10 @@ export default class DropContainer extends React.Component {
          // isDragReject: !allFilesAccepted
       });
 
+      //IF file type is accepted
+      //  SHOW GREEN border
+      //ELSE
+      //  RED border
       if (allFilesAccepted) {
          this.successBorder()
       } else {
@@ -82,7 +93,6 @@ export default class DropContainer extends React.Component {
       e.preventDefault();
       e.stopPropagation();
       e.dataTransfer.dropEffect = 'copy';
-
       return false;
    }
 
@@ -109,7 +119,6 @@ export default class DropContainer extends React.Component {
       }
 
       if(this.state.imageFile){
-         // console.log('onDragLeave');
          return;
       }
   }
@@ -186,13 +195,26 @@ export default class DropContainer extends React.Component {
       }
    }
 
+   /**
+      * Handle file type validation
+      * make sure the file is an image
+      * @param  {Event]} event
+      * @return {bool}
+   */
    fileAccepted(file) {
       return file.every(f => accepts(f, 'image/*'));
    }
 
+   /**
+      * Handle file type validation
+      * make sure the file is an image
+      * @param  {Event]} event
+      * @return {object}
+   */
    extractData(e) {
       return e.dataTransfer && e.dataTransfer.items ? e.dataTransfer.items : [];
    }
+
    /**
       * Handle the button footer color
       * @param  {string} color
@@ -220,12 +242,22 @@ export default class DropContainer extends React.Component {
       return label;
    }
 
+   /**
+      * Handle border color
+      * if file type is correct
+      * make border GREEN
+   */
    successBorder () {
       this.setState({
          borderStyle: 'successBorder'
       });
    }
 
+   /**
+      * Handle border color
+      * if file type is incorrect
+      * make border RED
+   */
    warningBorder () {
       this.setState({
          borderStyle: 'warningBorder'
@@ -251,9 +283,7 @@ export default class DropContainer extends React.Component {
             onClick={this.onClick}
             onDrop={this.onDrop}>
             <section className={classNames(innerClasses, css.groupWrapper)}>
-               <ImagePreview
-                  imgSrc={this.state.imageFile}
-               />
+               <ImagePreview imgSrc={this.state.imageFile} />
                <form className={classNames(css.flexContainer)}>
                   <UploadButton
                      ref='fileInput'
@@ -276,6 +306,7 @@ export default class DropContainer extends React.Component {
 const { string } = React.PropTypes;
 
 DropContainer.propTypes = {
-  buttonColor: string,
-  buttonText: string
+  buttonColor:       string,
+  buttonText:        string,
+  backgroundColor:   string
 };

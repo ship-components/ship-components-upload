@@ -1,5 +1,5 @@
 /**
- * ES6 Upload Example
+ * ES6 Dropzone Upload Example
  */
 
 import React from 'react';
@@ -13,9 +13,7 @@ class UploadButtonExamples extends React.Component {
          <h1>Upload Button Examples</h1>
          <div className='example-group'>
             <h2>Material Blue Button</h2>
-            <UploadContainer
-               buttonText='Upload'
-            />
+            <UploadContainer />
          </div>
          <div className='example-group'>
             <h2>Material Green Button</h2>
