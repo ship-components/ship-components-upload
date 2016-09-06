@@ -124,9 +124,9 @@ buttonColor='green'
 ```
 
 - DEFAULT VALUES:
-⋅⋅* background color: transparent
-⋅⋅* button color: blue
-⋅⋅* button text: Upload
+- [x] background color: transparent
+- [x] button color: blue
+- [x] button text: Upload
 
 ### Webpack Configuration
 This module is designed to be used with webpack but requires a few loaders if you are pulling the source into another project.
