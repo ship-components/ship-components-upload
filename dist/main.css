@@ -178,11 +178,11 @@ form {
 }
 
 .button--hide {
-  display: none;
+  visibility: hidden;
 }
 
 .button--show {
-  display: show;
+  visibility: visible;
 }
 
 .button--some::before {
