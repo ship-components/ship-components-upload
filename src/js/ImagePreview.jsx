@@ -1,19 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
-import css from '../stylesheets/button.css';
+import css from '../stylesheets/imagepreview.css';
 
 export default class ImagePreview extends React.Component {
    /**
       * Image Placeholder
       * @param  {Object} props
    */
-   constructor(props) {
+   constructor (props) {
       super(props);
-      this.state = {
-         isDragable: false
-      };
+      this.state = { isDragable: false };
+
       this.onMouseDownHandler = this.onMouseDownHandler.bind(this);
-      this.onMouseHoverHandler = this.onMouseHoverHandler.bind(this);
    }
 
    /**
@@ -22,13 +20,9 @@ export default class ImagePreview extends React.Component {
       * @param  {Event]} event
    */
    onMouseDownHandler (e) {
-      if(!this.state.isDragable){
+      if(!this.state.isDragable) {
          e.preventDefault();
       }
-   }
-
-   onMouseHoverHandler (e) {
-      console.log(e);
    }
    /**
       * Find out if image src is available
@@ -44,18 +38,11 @@ export default class ImagePreview extends React.Component {
 
    render() {
       return (
-         <div>
-            <img
-               src={this.props.imgSrc}
-               className={this.toggleImage()}
-               onMouseDown={this.onMouseDownHandler}
-               onMouseHover={this.onMouseHoverHandler}
-            />
-            <img
-               src=''
-               className={classNames(css.deleteImage)}
-            />
-         </div>
+         <img
+            src={this.props.imgSrc}
+            className={this.toggleImage()}
+            onMouseDown={this.onMouseDownHandler}
+         />
       );
    }
 }
@@ -67,5 +54,5 @@ export default class ImagePreview extends React.Component {
 const { string } = React.PropTypes;
 
 ImagePreview.propTypes = {
-   imgSrc: string
+   fileSrc: string
 };

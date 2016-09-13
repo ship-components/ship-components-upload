@@ -10,7 +10,7 @@
  */
 module.exports = function(grunt) {
   grunt.config.set('eslint', {
-    target: ['src/*.jsx'],
+    target: ['src/js/*.jsx'],
     options: {
       maxWarnings: 0
     }

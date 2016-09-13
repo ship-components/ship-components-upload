@@ -1,15 +1,15 @@
 import React from 'react';
-import classNames from 'classnames';
-import css from '../stylesheets/button.css';
 import DropContainer from './DropContainer';
 
+import css from '../stylesheets/uploadcontainer.css';
 
 export default class UploadContainer extends React.Component {
   render () {
     return (
-      <section className={classNames(css.wrapper)}>
+      <section className={css.uploadContainerWrapper} >
         <DropContainer
-          buttonColor={this.props.buttonColor}
+          accept='image'
+          buttonStyle={this.props.buttonStyle || 'default'}
           buttonText={this.props.buttonText}
           backgroundColor={this.props.backgroundColor}
         />
@@ -25,7 +25,6 @@ export default class UploadContainer extends React.Component {
 const { string } = React.PropTypes;
 
 UploadContainer.propTypes = {
-  buttonColor:       string,
-  buttonText:        string,
-  backgroundColor:   string
+  buttonStyle:       string,
+  buttonText:        string
 };

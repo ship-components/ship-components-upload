@@ -1,10 +1,7 @@
-/*eslint consistent-this: [2, "that"]*/
-
 import React from 'react';
 import classNames from 'classnames';
 import accepts from 'attr-accept';
-import $ from 'jquery';
-import css from '../stylesheets/button.css';
+import css from '../stylesheets/dropcontainer.css';
 import UploadButton from './UploadButton';
 import ImagePreview from './ImagePreview';
 
@@ -13,94 +10,81 @@ export default class DropContainer extends React.Component {
       * Base Container
       * @param  {Object} props
    */
-   constructor(props) {
+   constructor (props) {
       super(props);
+
       this.state = {
-         imageFile: '',
+         fileSrc: '',
+         dropzoneStyle: '',
          isDragActive: false,
-         borderStyle: '',
          visibility: 'show'
       };
-      this.handleChange = this.handleChange.bind(this);
       this.onDragOver = this.onDragOver.bind(this);
       this.onDrop = this.onDrop.bind(this);
       this.onDragLeave = this.onDragLeave.bind(this);
       this.onDragEnter = this.onDragEnter.bind(this);
-      this.onDragStart = this.onDragStart.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.handleInputButtonClick = this.handleInputButtonClick.bind(this);
    }
 
-   componentDidMount() {
+   componentDidMount () {
       this.enterCounter = 0;
-
-      // Change the background color of
-      // outer section with the prop color
-      // passing in
-      let $this = $(this.myTextInput)[0],
-         color = this.props.backgroundColor;
-      $($this).css('background-color', color);
-   }
-
-   /**
-      * Handle the drag start event
-      * @param  {Event]} event
-   */
-   onDragStart(e) {
-      if (this.props.onDragStart) {
-         this.props.onDragStart.call(this, e);
-      }
    }
 
    /**
       * Handle the drag enter event
       * @param  {Event]} event
    */
-   onDragEnter(e) {
-      e.preventDefault();
+   onDragEnter (event) {
+      event.preventDefault();
 
       // Count the dropzone and any children that are entered.
       ++this.enterCounter;
 
-      // This is tricky. During the drag even the dataTransfer.files is null
-      // But Chrome implements some drag store, which is accesible via dataTransfer.items
-      const dataTransferItems = this.extractData(e);
+      // This is tricky. During the drag even the dataTransfer.
+      // files is null But Chrome implements some drag store,
+      // which is accesible via dataTransfer.items
+      const dataTransferItems = this.extractData(event),
 
       // Now we need to convert the DataTransferList to Array
-      const allFilesAccepted = this.fileAccepted(Array.prototype.slice.call(dataTransferItems));
+      fileFormat = this.fileFormatFinder(this.props.accept),
+
+      // Check to make sure file is valid based on
+      // user's file format input
+      isFileValid = this.validateFileFormat(
+         Array.prototype.slice.call(dataTransferItems), fileFormat);
 
       this.setState({
-         isDragActive: allFilesAccepted,
-         borderStyle: 'dragBorder',
+         isDragActive: isFileValid,
+         dropzoneStyle: 'dragBorder',
          visibility: 'hide'
-         // isDragReject: !allFilesAccepted
       });
 
-      //IF file type is accepted
-      //  SHOW GREEN border
-      //ELSE
-      //  RED border
-      if (allFilesAccepted) {
-         this.successBorder()
+      // DropContainer turns green if valid format
+      // Otherwise turns red for warning
+      if (isFileValid) {
+         this.correctFormatBorderStyle()
       } else {
-         this.warningBorder();
+         this.incorrectFormatBorderStyle();
       }
-  }
+   }
 
    /**
       * Handle the drag over event
       * @param  {Event]} event
    */
-   onDragOver (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      e.dataTransfer.dropEffect = 'copy';
+   onDragOver (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.dataTransfer.dropEffect = 'copy';
       return false;
    }
 
    /**
       * Handle the drag leave event
    */
-   onDragLeave (e) {
-      e.preventDefault();
+   onDragLeave (event) {
+      event.preventDefault();
 
       // Only deactivate once the dropzone and all children was left.
       if (--this.enterCounter > 0) {
@@ -110,13 +94,13 @@ export default class DropContainer extends React.Component {
       this.setState({
          isDragActive: false,
          isDragReject: false,
-         borderStyle: '',
+         dropzoneStyle: '',
          visibility: 'show'
       });
 
-      if (this.props.onDragLeave) {
-         this.props.onDragLeave.call(this, e);
-      }
+      // if (this.props.onDragLeave) {
+      //    this.props.onDragLeave.call(this, event);
+      // }
 
       if(this.state.imageFile){
          return;
@@ -127,82 +111,72 @@ export default class DropContainer extends React.Component {
       * Handle the drop event
       * @param  {Event]} event
    */
-   onDrop (e) {
-      e.preventDefault();
+   onDrop (event) {
+      event.preventDefault();
       this.setState({
          isDragActive: false,
-         borderStyle: '',
+         dropzoneStyle: '',
          visibility: 'show'
       });
-      this.handleChange.call(this, e);
+      // Call handleChange function
+      this.handleChange.call(this, event);
    }
 
    /**
-      * Handle the click event on drop container
+      * Handle Input Button Click
+      * @param  {Event]} event
    */
-   // onClick () {
-   //    console.log('on click called');
-   //    this.refs.fileInput.myTextInput.click();
-   // }
+   handleInputButtonClick (event) {
+      this.handleChange(event);
+   }
 
    /**
-      * Handle the image state
-      * If image is available, will create a URL obj
-      * And modify the state value
+      * Handle the file state
+      * If file is valid => create a URL obj
+      * And modify the state value so the
+      * parent (UploadContainer) can access it
       * @param  {Event]} event
    */
    handleChange (event) {
-      let e = event.nativeEvent, imageFile;
-
-      const dataTransferItems = this.extractData(event);
-      const allFilesAccepted = this.fileAccepted(Array.prototype.slice.call(dataTransferItems));
+      let e = event.nativeEvent,
+         dataTransferItems = this.extractData(event),
+         fileFormat = this.fileFormatFinder(this.props.accept),
+         isFileValid = this.validateFileFormat(Array.prototype.slice.call(dataTransferItems), fileFormat);
 
       // Check to make sure the dropped file
-      // is in image format - image/*
-      if(allFilesAccepted){
-         // Setting the state image source
-         // With drag & drop event
-         if(e.dataTransfer) {
-            let evt = e.dataTransfer.files[0];
+      // is in correct format - e.g image/*
+      if(isFileValid){
+         let eventFile = e.dataTransfer || event.target;
 
-            if(evt !== undefined) {
-               imageFile = URL.createObjectURL(evt);
-               // console.log('**DRAGGED** SELECTED FILE', evt);
-               this.setState({
-                  imageFile: imageFile
-               });
-            } else {
-               console.warn('Warning: no image selected');
-            }
-
-         // Setting the state image source
-         // With click button event
+         if(eventFile) {
+            this.dragAndDropFileUrlGenerator(eventFile)
          } else {
-            let evt = event.target.files[0];
-
-            // Image src to pass it to ImagePreview Component
-            if(evt !== undefined) {
-               imageFile = URL.createObjectURL(event.target.files[0]);
-               // console.log('SELECTED FILE', event.target.files[0]);
-
-               this.setState({
-                  imageFile: imageFile
-               });
-            } else {
-               console.warn('Warning: no image selected');
-            }
+            this.inputButtonFileUrlGenerator(eventFile);
          }
       }
    }
 
-   /**
-      * Handle file type validation
-      * make sure the file is an image
-      * @param  {Event]} event
-      * @return {bool}
-   */
-   fileAccepted(file) {
-      return file.every(f => accepts(f, 'image/*'));
+   dragAndDropFileUrlGenerator (eventFile) {
+      let file = eventFile.files[0], uploadFile;
+
+      if(typeof file !== undefined) {
+         uploadFile = URL.createObjectURL(file);
+
+         this.setState({
+            fileSrc: uploadFile
+         });
+      }
+   }
+
+   inputButtonFileUrlGenerator (eventFile) {
+      let uploadFile;
+      if(typeof eventFile !== undefined) {
+         uploadFile = URL.createObjectURL(eventFile);
+
+         this.setState({
+            fileSrc: uploadFile
+         });
+      }
    }
 
    /**
@@ -211,45 +185,50 @@ export default class DropContainer extends React.Component {
       * @param  {Event]} event
       * @return {object}
    */
-   extractData(e) {
-      return e.dataTransfer && e.dataTransfer.items ? e.dataTransfer.items : [];
+   extractData (event) {
+      return event.dataTransfer && event.dataTransfer.items ?
+               event.dataTransfer.items : [];
    }
 
-   /**
-      * Handle the button footer color
-      * @param  {string} color
-      * @return {string}
-   */
-   setColor (val = 'blue') {
-      let color = val.toLowerCase();
-
-      if(val === 'green') {
-         color = 'green';
-      }else if (val === 'gray') {
-         color = 'gray';
-      } else if ( val === 'white') {
-         color = 'white';
+   fileFormatFinder (props) {
+      // const FILE_FORMATS = {
+      //    image: /\.jpg | \.jpeg | \.gif | \.png/,
+      //    text: /\.txt | \.doc | \.docs/,
+      //    zip: /\.zip | \.tar/,
+      //    video: /\.mov | \.mpeg | \.mpg | \.avi | \.mkv | \.wmv/,
+      //    music: /\.m1v | \.mp2 | \.mp3 | \.mpa | \.mpe | \.m3u/
+      // }
+      const FILE_FORMATS = {
+         image: 'image/*',
+         text: 'text/*',
+         pdf: 'application/pdf',
+         zip: 'application/zip',
+         video: 'video/*',
+         audio: 'audio/*',
+         app: 'application/*'
       }
-      return color;
+      return FILE_FORMATS[props];
    }
 
    /**
-      * Handle the button label text
-      * @param  {string} label
-      * @return {string}
+      * Handle file type validation
+      * make sure the file is an image
+      * @param  {Event]} event
+      * @return {bool}
    */
-   setText (label = 'Upload') {
-      return label;
+   validateFileFormat (file, fileFormat) {
+      return file.every(f => accepts(f, fileFormat));
    }
+
 
    /**
       * Handle border color
       * if file type is correct
       * make border GREEN
    */
-   successBorder () {
+   correctFormatBorderStyle () {
       this.setState({
-         borderStyle: 'successBorder'
+         dropzoneStyle: 'correctFormat'
       });
    }
 
@@ -258,42 +237,35 @@ export default class DropContainer extends React.Component {
       * if file type is incorrect
       * make border RED
    */
-   warningBorder () {
-      this.setState({
-         borderStyle: 'warningBorder'
-      });
+   incorrectFormatBorderStyle () {
+      this.setState({ dropzoneStyle: 'incorrectFormat' });
    }
 
    render () {
       // define styles
-      let color = this.props.buttonColor,
-         text = this.props.buttonText,
-         borderStyle = this.state.borderStyle,
-         visibility = this.state.visibility,
-         outerClasses = classNames(css.groupWrapper, css[borderStyle]),
-         innerClasses = classNames(css[visibility]);
+      let { dropzoneStyle, visibility } = this.state,
+         dropContainerStyle = classNames(css.dropzoneContainer, css[dropzoneStyle]);
+
       return (
          <section
-            ref={(ref) => this.myTextInput = ref}
-            className={outerClasses}
+            className={dropContainerStyle}
             onDragOver={this.onDragOver}
             onDragLeave={this.onDragLeave}
             onDragStart={this.onDragStart}
             onDragEnter={this.onDragEnter}
             onClick={this.onClick}
             onDrop={this.onDrop}>
-            <section className={classNames(innerClasses, css.groupWrapper)}>
-               <ImagePreview imgSrc={this.state.imageFile} />
-               <form className={classNames(css.flexContainer)}>
+            <div className={css[visibility]}>
+               <ImagePreview imgSrc={this.state.fileSrc}/>
+               <form>
                   <UploadButton
-                     ref='fileInput'
-                     accept='.png, .gif, .jpg, .jpeg'
-                     onChange={this.handleChange.bind(this)}
-                     color={this.setColor(color)}
-                     label={this.setText(text)}
+                     ref='inputFile'
+                     buttonStyle={this.props.buttonStyle}
+                     buttonLabel={this.props.buttonText}
+                     onChange={this.handleInputButtonClick}
                   />
                </form>
-            </section>
+            </div>
          </section>
       );
    }
@@ -306,7 +278,7 @@ export default class DropContainer extends React.Component {
 const { string } = React.PropTypes;
 
 DropContainer.propTypes = {
-  buttonColor:       string,
-  buttonText:        string,
-  backgroundColor:   string
+   accept:            string.isRequired,
+   buttonStyle:       string,
+   buttonText:        string
 };

@@ -1,11 +1,12 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var assign = require('object-assign');
 
 module.exports = {
   // Where to start
   entry: {
-    main: path.resolve(__dirname, '../../src/js/index.js')
+    ShipComponentsDropzone: path.resolve(__dirname, '../../src/js/index.js')
   },
 
   // Where to output
@@ -69,10 +70,16 @@ module.exports = {
   // CSS Modules
   postcss: [
     require('postcss-nested'),
+    require('postcss-mixins')({
+        mixins: require('../../src/stylesheets/mixins.js')
+    }),
     require('postcss-simple-vars')({
-      variables: {
-        'primary-color' : '#42aa65'
-      }
+        variables: function() {
+            return assign(
+                require('../../src/stylesheets/colorVariables'),
+                require('../../src/stylesheets/fontVariables.js')
+            );
+        }
     }),
     require('postcss-color-hex-alpha'),
     require('postcss-color-function'),

@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *
 	 * @author       Sepand Assadi <sepand_assadi@playstation.sony.com>
 	 * @file         Helper file for importing Buttons
-	 * @example      import { UploadContainer } from 'react-buttons/src';
+	 * @example      import { UploadContainer } from 'ship-components-dropzone';
 	 ******************************************************************************/
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -84,7 +84,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"wrapper":"button--wrapper","groupWrapper":"button--groupWrapper","dragBorder":"button--dragBorder","successBorder":"button--successBorder","warningBorder":"button--warningBorder","flexItem":"button--flexItem","input":"button--input","btn":"button--btn","blue":"button--blue","green":"button--green","gray":"button--gray","white":"button--white","raised":"button--raised","img":"button--img","hide":"button--hide","show":"button--show","some":"button--some"};
+	module.exports = {"wrapper":"uploadcontainer--wrapper","groupWrapper":"uploadcontainer--groupWrapper","dragBorder":"uploadcontainer--dragBorder","successBorder":"uploadcontainer--successBorder","warningBorder":"uploadcontainer--warningBorder","flexItem":"uploadcontainer--flexItem","input":"uploadcontainer--input","inputHidden":"uploadcontainer--inputHidden","btn":"uploadcontainer--btn","ripple":"uploadcontainer--ripple","rippleEffect":"uploadcontainer--rippleEffect","default":"uploadcontainer--default","blue":"uploadcontainer--blue","green":"uploadcontainer--green","gray":"uploadcontainer--gray","white":"uploadcontainer--white","raised":"uploadcontainer--raised","img":"uploadcontainer--img","hide":"uploadcontainer--hide","show":"uploadcontainer--show","some":"uploadcontainer--some"};
 
 /***/ },
 /* 2 */
@@ -10224,9 +10224,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _button = __webpack_require__(1);
+	var _uploadcontainer = __webpack_require__(1);
 	
-	var _button2 = _interopRequireDefault(_button);
+	var _uploadcontainer2 = _interopRequireDefault(_uploadcontainer);
 	
 	var _UploadButton = __webpack_require__(8);
 	
@@ -10569,13 +10569,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: function render() {
 	         var _this2 = this;
 	
+	         // console.log(this.props)
 	         // define styles
-	         var color = this.props.buttonColor,
-	             text = this.props.buttonText,
-	             borderStyle = this.state.borderStyle,
+	         var
+	         // color = this.props.buttonColor,
+	         // text = this.props.buttonText,
+	         borderStyle = this.state.borderStyle,
 	             visibility = this.state.visibility,
-	             outerClasses = (0, _classnames2.default)(_button2.default.groupWrapper, _button2.default[borderStyle]),
-	             innerClasses = (0, _classnames2.default)(_button2.default[visibility]);
+	             outerClasses = (0, _classnames2.default)(_uploadcontainer2.default.groupWrapper, _uploadcontainer2.default[borderStyle]),
+	             innerClasses = (0, _classnames2.default)(_uploadcontainer2.default[visibility]);
 	         return _react2.default.createElement('section', {
 	            ref: function ref(_ref) {
 	               return _this2.myTextInput = _ref;
@@ -10586,12 +10588,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onDragStart: this.onDragStart,
 	            onDragEnter: this.onDragEnter,
 	            onClick: this.onClick,
-	            onDrop: this.onDrop }, _react2.default.createElement('section', { className: (0, _classnames2.default)(innerClasses, _button2.default.groupWrapper) }, _react2.default.createElement(_ImagePreview2.default, { imgSrc: this.state.imageFile }), _react2.default.createElement('form', { className: (0, _classnames2.default)(_button2.default.flexContainer) }, _react2.default.createElement(_UploadButton2.default, {
+	            onDrop: this.onDrop }, _react2.default.createElement('section', { className: (0, _classnames2.default)(innerClasses, _uploadcontainer2.default.groupWrapper) }, _react2.default.createElement(_ImagePreview2.default, { imgSrc: this.state.imageFile }), _react2.default.createElement('form', { className: (0, _classnames2.default)(_uploadcontainer2.default.flexContainer) }, _react2.default.createElement(_UploadButton2.default, {
 	            ref: 'fileInput',
 	            accept: '.png, .gif, .jpg, .jpeg',
 	            onChange: this.handleChange.bind(this),
-	            color: this.setColor(color),
-	            label: this.setText(text)
+	            buttonStyle: this.props.buttonStyle,
+	            buttonLabel: this.props.buttonText
 	         }))));
 	      }
 	   }]);
@@ -10643,9 +10645,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _button = __webpack_require__(1);
+	var _uploadcontainer = __webpack_require__(1);
 	
-	var _button2 = _interopRequireDefault(_button);
+	var _uploadcontainer2 = _interopRequireDefault(_uploadcontainer);
 	
 	function _interopRequireDefault(obj) {
 	   return obj && obj.__esModule ? obj : { default: obj };
@@ -10717,8 +10719,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      key: 'toggleImage',
 	      value: function toggleImage() {
 	         var image = this.props.imgSrc,
-	             imgShow = (0, _classnames2.default)(_button2.default.img, _button2.default.show),
-	             imgHide = (0, _classnames2.default)(_button2.default.img, _button2.default.hide);
+	             imgShow = (0, _classnames2.default)(_uploadcontainer2.default.img, _uploadcontainer2.default.show),
+	             imgHide = (0, _classnames2.default)(_uploadcontainer2.default.img, _uploadcontainer2.default.hide);
 	         return image === '' ? imgHide : imgShow;
 	      }
 	   }, {
@@ -10731,7 +10733,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onMouseHover: this.onMouseHoverHandler
 	         }), _react2.default.createElement('img', {
 	            src: '',
-	            className: (0, _classnames2.default)(_button2.default.deleteImage)
+	            className: (0, _classnames2.default)(_uploadcontainer2.default.deleteImage)
 	         }));
 	      }
 	   }]);
@@ -10763,6 +10765,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	   value: true
 	});
 	
+	var _extends = Object.assign || function (target) {
+	   for (var i = 1; i < arguments.length; i++) {
+	      var source = arguments[i];for (var key in source) {
+	         if (Object.prototype.hasOwnProperty.call(source, key)) {
+	            target[key] = source[key];
+	         }
+	      }
+	   }return target;
+	};
+	
 	var _createClass = function () {
 	   function defineProperties(target, props) {
 	      for (var i = 0; i < props.length; i++) {
@@ -10785,9 +10797,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _button = __webpack_require__(1);
+	var _uploadcontainer = __webpack_require__(1);
 	
-	var _button2 = _interopRequireDefault(_button);
+	var _uploadcontainer2 = _interopRequireDefault(_uploadcontainer);
 	
 	function _interopRequireDefault(obj) {
 	   return obj && obj.__esModule ? obj : { default: obj };
@@ -10827,6 +10839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         buttonLabel: ''
 	      };
 	      _this.handleChange = _this.handleChange.bind(_this);
+	      _this.onClickHandler = _this.onClickHandler.bind(_this);
 	      return _this;
 	   }
 	
@@ -10858,34 +10871,62 @@ return /******/ (function(modules) { // webpackBootstrap
 	         }
 	      }
 	   }, {
+	      key: 'onClickHandler',
+	      value: function onClickHandler(e) {
+	         e.preventDefault();
+	
+	         //    let $rippleElement = $('<span class="ripple-effect" />'),
+	         //    $buttonElement = $(this),
+	         //    btnOffset = $buttonElement.offset(),
+	         //    xPos = e.pageX - btnOffset.left,
+	         //    yPos = e.pageY - btnOffset.top,
+	         //    size = parseInt(Math.min($buttonElement.height(), $buttonElement.width()) * 0.5),
+	         //    animateSize = parseInt(Math.max($buttonElement.width(), $buttonElement.height()) * Math.PI);
+	
+	         // $rippleElement
+	         //    .css({
+	         //       top: yPos,
+	         //       left: xPos,
+	         //       width: size,
+	         //       height: size,
+	
+	         //       backgroundColor: $buttonElement.data('ripple-color')
+	         //    })
+	         //    .appendTo($buttonElement)
+	         //    .animate({
+	         //       width: animateSize,
+	         //       height: animateSize,
+	         //       opacity: 0
+	         //    }, 700, function() {
+	         //       $(this).remove();
+	         //    });
+	
+	         // Trigger a click event on input file
+	         this.refs.myTextInput.click();
+	      }
+	   }, {
 	      key: 'render',
 	      value: function render() {
-	         var _this2 = this;
-	
 	         // let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
-	         var color = this.props.color;
+	         var buttonStyle = this.props.buttonStyle;
 	
-	         var btnClasses = (0, _classnames2.default)(_button2.default.btn, _button2.default.raised, _button2.default.flexItem, _button2.default.input, _button2.default[color]);
+	         var btnClasses = (0, _classnames2.default)(_uploadcontainer2.default.inputHidden, _uploadcontainer2.default[buttonStyle], _uploadcontainer2.default.ripple, _uploadcontainer2.default.btn);
 	         // Construct props
-	         // let props = {
-	         //    disabled: this.props.disabled,
-	         //    ref:'container',
-	         //    className: btnClasses,
-	         //    color: this.props.color,
-	         //    onMouseEnter: this.handleMouseEnter,
-	         //    onMouseLeave: this.handleMouseLeave,
-	         //    onClick: this.handleClick
-	         // }
-	
-	         return _react2.default.createElement('input', { type: 'file',
-	            ref: function ref(_ref) {
-	               return _this2.myTextInput = _ref;
-	            },
-	            onChange: this.handleChange,
+	         var inputProps = {
 	            disabled: this.props.disabled,
+	            ref: 'myTextInput',
+	            className: btnClasses,
 	            accept: this.props.accept,
-	            className: btnClasses
-	         });
+	            onChange: this.handleChange,
+	            onClick: this.handleClick
+	         };
+	
+	         console.log(this.props);
+	
+	         return _react2.default.createElement('div', null, _react2.default.createElement('input', _extends({ type: 'file'
+	         }, inputProps)), _react2.default.createElement('button', {
+	            className: btnClasses,
+	            onClick: this.onClickHandler }, this.props.buttonLabel || 'Upload'));
 	      }
 	   }]);
 	
@@ -10939,9 +10980,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _button = __webpack_require__(1);
+	var _uploadcontainer = __webpack_require__(1);
 	
-	var _button2 = _interopRequireDefault(_button);
+	var _uploadcontainer2 = _interopRequireDefault(_uploadcontainer);
 	
 	var _DropContainer = __webpack_require__(6);
 	
@@ -10981,8 +11022,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(UploadContainer, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('section', { className: (0, _classnames2.default)(_button2.default.wrapper) }, _react2.default.createElement(_DropContainer2.default, {
-	        buttonColor: this.props.buttonColor,
+	      return _react2.default.createElement('section', { className: (0, _classnames2.default)(_uploadcontainer2.default.wrapper) }, _react2.default.createElement(_DropContainer2.default, {
+	        buttonStyle: this.props.buttonStyle || 'default',
 	        buttonText: this.props.buttonText,
 	        backgroundColor: this.props.backgroundColor
 	      }));
