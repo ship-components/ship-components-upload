@@ -1,0 +1,9 @@
+/* CSS Style for the dropzone container */
+.uploadContainerWrapper {
+  font-family: $primary-font;
+  margin: 20px auto;
+  position: relative;
+  height: 100px;
+  width: 500px;
+  background-color: transparent;
+}
